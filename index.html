@@ -21,6 +21,7 @@
         <a href="#scope">Scope</a>
         <a href="#experience">Experience</a>
         <a href="#architecture">Architecture</a>
+        <a href="#built">Built</a>
         <a href="#evaluation">Evaluation</a>
       </nav>
     </header>
@@ -270,6 +271,69 @@
           <li>Aggregate into MatchAnalysis JSON</li>
           <li>Render coaching dashboard in Next.js</li>
         </ol>
+      </section>
+
+      <section id="built" class="section-panel">
+        <p class="section-kicker">Under The Hood</p>
+        <h2>What The Demo Does</h2>
+        <p>Five stages run every time you upload a clip. Each one does a specific job, then passes its output to the next.</p>
+        <ol class="flow-list" style="margin-top:1.5rem">
+          <li><strong>Keyframes captured in the browser.</strong> The full video never leaves your device. One frame is pulled every 4–6 seconds at high resolution — a deliberate choice, because the ball becomes too small to detect at half the size.</li>
+          <li><strong>Four frames analyzed at once.</strong> Each frame goes to Claude Vision with instructions to locate every player from both teams, the ball, possession, and any match events. Four run in parallel so total time is a quarter of what it would be back-to-front.</li>
+          <li><strong>Camera window calibrated.</strong> A separate AI call estimates which slice of the pitch is visible in each frame — left box, center, full-pitch wide. Without this, the same screen position means different things at different zoom levels.</li>
+          <li><strong>Key moments reviewed.</strong> The system pre-flags what is worth checking using geometry: ball near the goal line, players clustering near goal, sudden direction reversals. Claude verifies those specific windows. Scoreboards are also read in every frame and compared — a goal is confirmed the moment the number goes up, even if no visual goal cue was caught.</li>
+          <li><strong>Coaching insights generated.</strong> One call to Claude's most capable model receives the full picture: match statistics, shot positions, and up to 12 curated frames from the clip. It returns plain-English coaching insights, a win/draw/loss projection, and expected goals grounded in what it can actually see — keeper position, shot angle, defenders in the way.</li>
+        </ol>
+      </section>
+
+      <section class="section-panel split">
+        <div>
+          <p class="section-kicker">Why It Takes Time</p>
+          <h2>Honest About Latency</h2>
+          <p>
+            A 2-minute clip takes 3–7 minutes to process. That is not a bug — it
+            is the cost of calling an AI API many times in sequence. Each call
+            carries 8–15 seconds of network and model time.
+          </p>
+          <p>
+            Running four requests at once already cuts total time by 75% compared
+            to doing them one after another. The remaining wait comes from the
+            number of rounds: frame analysis, camera calibration, event review,
+            and synthesis are each a separate trip to the API.
+          </p>
+          <p>
+            The Phase 2 architecture solves this by moving detection to a local
+            GPU model. Claude is called once at the end on aggregated data, not
+            once per frame. That is where processing time drops from minutes to
+            seconds.
+          </p>
+        </div>
+        <div>
+          <p class="section-kicker">With Access To More Data</p>
+          <h2>What Becomes Possible</h2>
+          <div class="future-grid">
+            <article>
+              <span>Player ETL</span>
+              <strong>Named player tracking</strong>
+              <p>Jersey number recognition plus a roster feed turns anonymous dots into named players. Heatmaps and sprint data per individual across a full season.</p>
+            </article>
+            <article>
+              <span>League ETL</span>
+              <strong>Cross-match patterns</strong>
+              <p>Each analysis outputs structured data. Run it across a season and aggregate by team or competition — pressing tendency home vs away, shot zones, defensive line shifts over time.</p>
+            </article>
+            <article>
+              <span>Formation</span>
+              <strong>Automatic shape detection</strong>
+              <p>Formation is currently fixed. A full 90-minute feed provides enough positional data to infer formation automatically and track mid-game shifts.</p>
+            </article>
+            <article>
+              <span>Live</span>
+              <strong>Real-time coaching alerts</strong>
+              <p>The local detection worker already exists. Swap uploaded clips for a live feed and a message queue and the same stack delivers alerts in real time.</p>
+            </article>
+          </div>
+        </div>
       </section>
 
       <section class="section-panel challenge-section">
