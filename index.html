@@ -15,6 +15,7 @@
         <a href="#problem">Problem</a>
         <a href="#landscape">Landscape</a>
         <a href="#scope">Scope</a>
+        <a href="#demo">Demo</a>
         <a href="#data">Data</a>
         <a href="#architecture">Architecture</a>
         <a href="#pipeline">Pipeline</a>
@@ -27,24 +28,66 @@
          01 — HERO
     ─────────────────────────────────────── -->
     <section class="hero">
-      <div class="wrap">
-        <div class="section-num">01 — Introduction</div>
-        <h1>How I went about<br>SoccerVision.</h1>
-        <p class="hero-lede">
-          Think about everything available to us right now — AI vision APIs, language
-          models, cloud infrastructure, open-source CV models. It's like a box of
-          Legos. Powerful pieces, already built. The job isn't to reinvent them. It's
-          to know which ones exist, understand how they connect, and figure out what
-          problem you can solve by putting them together the right way.
-        </p>
-        <div class="task-card">
-          <span class="task-label">The Task</span>
-          <p>
-            Explore the potential of using machine learning and AI to analyze
-            videos of soccer matches and extract valuable insights. I wanted to
-            tackle this problem by assembling the right blocks — not building from
-            scratch.
+      <div class="wrap hero-wrap">
+        <div class="hero-left">
+          <div class="section-num">01 — Introduction</div>
+          <h1>How I went about SoccerVision.</h1>
+          <p class="hero-lede">
+            Think about everything available to us right now — AI vision APIs, language
+            models, cloud infrastructure, open-source CV models. It's like a box of
+            Legos. Powerful pieces, already built. The job isn't to reinvent them. It's
+            to know which ones exist, understand how they connect, and figure out what
+            problem you can solve by putting them together the right way.
           </p>
+          <div class="task-card">
+            <span class="task-label">The Task</span>
+            <p>
+              Explore the potential of using machine learning and AI to analyze
+              videos of soccer matches and extract valuable insights. I wanted to
+              tackle this problem by assembling the right blocks — not building from
+              scratch.
+            </p>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="approach-flow">
+            <div class="af-header">Research Approach</div>
+            <div class="af-step">
+              <span class="af-num">01</span>
+              <strong>Understand the users</strong>
+              <p>Who makes decisions? What do they actually need from a tool?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">02</span>
+              <strong>Define the problem</strong>
+              <p>Where does current data fall short? What gap is worth closing?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">03</span>
+              <strong>Survey the landscape</strong>
+              <p>What already exists? Where do legacy tools and AI tools break down?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">04</span>
+              <strong>Scope it ruthlessly</strong>
+              <p>What's achievable now? What's deliberately Phase 2?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">05</span>
+              <strong>Identify the data sources</strong>
+              <p>What signals live in video? How does each one become a useful output?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">06</span>
+              <strong>Choose &amp; evaluate techniques</strong>
+              <p>Which ML/AI blocks fit each job? What are their real trade-offs?</p>
+            </div>
+            <div class="af-step">
+              <span class="af-num">07</span>
+              <strong>Build, measure, be honest</strong>
+              <p>What does the POC prove? What does it not prove yet?</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -55,7 +98,7 @@
     <section id="users" class="s-gray reveal">
       <div class="wrap">
         <div class="section-num">02 — Who We're Building For</div>
-        <h2>Start with the people,<br>not the technology.</h2>
+        <h2>Start with the people, not the technology.</h2>
         <p class="section-intro">
           Before writing a single line of code, the first question was: who
           actually needs this, and what do they do with it?
@@ -119,7 +162,7 @@
     <section id="problem" class="s-white reveal">
       <div class="wrap">
         <div class="section-num">03 — The Problem</div>
-        <h2>Coaches have strong instincts.<br>Data is fragmented.</h2>
+        <h2>Coaches have strong instincts. Data is fragmented.</h2>
 
         <div class="two-col">
           <div>
@@ -163,7 +206,7 @@
     <section id="landscape" class="s-gray reveal">
       <div class="wrap">
         <div class="section-num">04 — The Landscape</div>
-        <h2>What already exists,<br>and where it falls short.</h2>
+        <h2>What already exists, and where it falls short.</h2>
         <p class="section-intro">
           Understanding the gap between what's possible and what's being used
           defines where to build.
@@ -220,7 +263,7 @@
     <section id="scope" class="s-white reveal">
       <div class="wrap">
         <div class="section-num">05 — Scope</div>
-        <h2>Know what you're building.<br>And what you're not.</h2>
+        <h2>Know what you're building. And what you're not.</h2>
 
         <div class="scope-meta">
           <div class="scope-meta-item">
@@ -276,10 +319,52 @@
     <!-- ──────────────────────────────────────
          06 — DATA
     ─────────────────────────────────────── -->
+    <!-- ──────────────────────────────────────
+         06 — DEMO
+    ─────────────────────────────────────── -->
+    <section id="demo" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">06 — The Demo</div>
+        <h2>Here's what it actually produces.</h2>
+        <p class="section-intro">
+          Upload a 1–3 minute broadcast clip. The system runs the full pipeline
+          and returns structured coaching output. Here are the three moments in
+          that flow worth seeing.
+        </p>
+
+        <div class="demo-grid">
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 1</div>
+            <div class="slot-title">Upload &amp; Extract</div>
+            <div class="slot-sub">Drop a clip. Frames extracted instantly in the browser — no upload wait.</div>
+          </div>
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 2</div>
+            <div class="slot-title">Live Analysis</div>
+            <div class="slot-sub">Watch the pipeline run: frame batches processing, events flagging, pitch map building.</div>
+          </div>
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 3</div>
+            <div class="slot-title">Coaching Output</div>
+            <div class="slot-sub">Insights, xG, outcome projection, and a plain-English clip summary — ready to act on.</div>
+          </div>
+        </div>
+
+        <div class="demo-note">
+          <strong>Live demo here.</strong> The screenshot slots above are placeholders —
+          replace with actual screenshots from the app, or run the live demo at this point
+          in the presentation and come back to the architecture section to explain how it works.
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         07 — DATA (now 08 after demo insertion)
+    ─────────────────────────────────────── -->
     <section id="data" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">06 — Data Extraction</div>
-        <h2>What can we actually<br>pull from a video?</h2>
+        <div class="section-num">08 — Data Extraction</div>
+        <h2>What can we actually pull from a video?</h2>
         <p class="section-intro">
           Before insights, you need to understand what types of signals live
           inside video footage and how each one maps to something useful.
@@ -315,12 +400,12 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         07 — ARCHITECTURE
+         09 — ARCHITECTURE
     ─────────────────────────────────────── -->
     <section id="architecture" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">07 — Architecture</div>
-        <h2>How the pipeline<br>actually works.</h2>
+        <div class="section-num">09 — Architecture</div>
+        <h2>How the pipeline actually works.</h2>
         <p class="section-intro">
           Five stages take a raw video clip and turn it into structured coaching
           insights.
@@ -402,12 +487,12 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         08 — PIPELINE DEEP DIVE
+         10 — PIPELINE DEEP DIVE
     ─────────────────────────────────────── -->
     <section id="pipeline" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">08 — Pipeline Deep Dive</div>
-        <h2>Every file, every model call,<br>every step.</h2>
+        <div class="section-num">10 — Pipeline Deep Dive</div>
+        <h2>Every file, every model call, every step.</h2>
         <p class="section-intro">
           A full map of what runs when you upload a clip — broken down by the
           actual files in the codebase, the AI models they call, and what each
@@ -533,12 +618,12 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         09 — ML & AI
+         11 — ML & AI
     ─────────────────────────────────────── -->
     <section id="ml" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">09 — ML &amp; AI Techniques</div>
-        <h2>Choosing the right<br>tool for each job.</h2>
+        <div class="section-num">11 — ML &amp; AI Techniques</div>
+        <h2>Choosing the right tool for each job.</h2>
         <p class="section-intro">
           Different stages need different capabilities. The key is matching the
           right model to the right task — and knowing what each one can't do.
@@ -612,12 +697,12 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         10 — CHALLENGES
+         12 — CHALLENGES
     ─────────────────────────────────────── -->
     <section id="challenges" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">10 — Challenges &amp; Validation</div>
-        <h2>What makes this<br>genuinely hard.</h2>
+        <div class="section-num">12 — Challenges &amp; Validation</div>
+        <h2>What makes this genuinely hard.</h2>
 
         <div class="ch-grid">
           <div class="ch-card">
@@ -657,12 +742,12 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         11 — WHAT'S NEXT
+         13 — WHAT'S NEXT
     ─────────────────────────────────────── -->
     <section id="next" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">11 — What This Enables</div>
-        <h2>This is the foundation.<br>Here's where it goes.</h2>
+        <div class="section-num">13 — What This Enables</div>
+        <h2>This is the foundation. Here's where it goes.</h2>
         <p class="section-intro">
           The demo handles short clips. With more data and infrastructure, the
           same pipeline extends into something much more powerful.
@@ -699,7 +784,7 @@
     <footer class="closing">
       <div class="wrap">
         <div class="closing-kicker">The takeaway</div>
-        <h2>The pieces existed.<br>The work was knowing<br>which ones to connect.</h2>
+        <h2>The pieces existed. The work was knowing which ones to connect.</h2>
         <p>
           SoccerVision is a proof of concept — built to explore whether AI can
           do more than track, whether it can actually understand what it sees.
