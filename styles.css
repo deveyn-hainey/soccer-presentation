@@ -803,6 +803,49 @@ p { color: var(--text); }
 }
 
 /* ================================================
+   METRIC DEFINITIONS
+================================================ */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+}
+
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-card span {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--green-mid);
+  color: var(--green-dark);
+  padding: 0.18rem 0.46rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+}
+
+.metric-card p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ================================================
    PIPELINE DIAGRAM
 ================================================ */
 .pipeline-scroll {
@@ -1017,6 +1060,60 @@ p { color: var(--text); }
 }
 
 /* ================================================
+   TRADEOFFS
+================================================ */
+.trade-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.35rem;
+}
+
+.trade-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.trade-card span {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 0.55rem;
+}
+
+.trade-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.production-callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius);
+  padding: 1.1rem 1.35rem;
+}
+
+.production-callout strong {
+  color: #92400e;
+  font-size: 0.86rem;
+}
+
+.production-callout p {
+  font-size: 0.88rem;
+  color: #78350f;
+  line-height: 1.58;
+}
+
+/* ================================================
    CHALLENGES
 ================================================ */
 .ch-grid {
@@ -1104,6 +1201,64 @@ p { color: var(--text); }
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.58;
+}
+
+/* ================================================
+   DESIGN / DEMO IMAGES
+================================================ */
+.design-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.design-shot,
+.demo-shot {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.design-shot img,
+.demo-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--navy);
+}
+
+.design-shot-large img {
+  aspect-ratio: 16 / 10;
+}
+
+.design-shot figcaption,
+.demo-shot figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.design-shot figcaption strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
+}
+
+.demo-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 /* ================================================
@@ -1440,11 +1595,16 @@ p { color: var(--text); }
   .block-arrow      { display: none; }
   .truth-row        { grid-template-columns: 1fr; }
   .data-grid        { grid-template-columns: 1fr 1fr; }
+  .metric-grid      { grid-template-columns: 1fr 1fr; }
   .ml-grid          { grid-template-columns: 1fr; }
   .hybrid-row       { flex-direction: column; }
   .hybrid-sep       { display: none; }
+  .trade-grid       { grid-template-columns: 1fr 1fr; }
+  .production-callout { grid-template-columns: 1fr; }
   .ch-grid          { grid-template-columns: 1fr; }
   .eval-grid        { grid-template-columns: 1fr 1fr; }
+  .design-grid      { grid-template-columns: 1fr; }
+  .demo-showcase    { grid-template-columns: 1fr; }
   .future-grid      { grid-template-columns: 1fr; }
 }
 
@@ -1452,6 +1612,8 @@ p { color: var(--text); }
   .coverage-grid { grid-template-columns: 1fr; }
   .needs-grid  { grid-template-columns: 1fr; }
   .data-grid   { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: 1fr; }
+  .trade-grid  { grid-template-columns: 1fr; }
   .eval-grid   { grid-template-columns: 1fr; }
   .success-grid { grid-template-columns: 1fr; }
 }
