@@ -23,7 +23,11 @@
    RESET
 ================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 52px;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
@@ -90,11 +94,23 @@ strong { font-weight: 700; }
 .s-gray {
   background: var(--bg);
   padding: clamp(4rem, 8vw, 5.5rem) 0;
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .s-white {
   background: var(--surface);
   padding: clamp(4rem, 8vw, 5.5rem) 0;
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ================================================
@@ -167,6 +183,11 @@ p { color: var(--text); }
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: clamp(4rem, 8vw, 6rem) 0;
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
 }
 
 .hero-wrap {
@@ -1267,13 +1288,15 @@ p { color: var(--text); }
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: var(--shadow);
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .demo-hero-shot img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: min(56vh, 560px);
+  object-fit: contain;
   object-position: top center;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -1335,6 +1358,11 @@ p { color: var(--text); }
 .closing {
   background: var(--navy);
   padding: clamp(4rem, 8vw, 6rem) 0;
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
 }
 
 .closing-kicker {
