@@ -674,7 +674,7 @@ p { color: var(--text); }
 .scope-list li:last-child { border-bottom: none; }
 
 .scope-in .scope-list li::before  { content: '✓  '; color: var(--green); font-weight: 700; }
-.scope-out .scope-list li::before { content: '–  '; color: var(--muted-2); }
+.scope-out .scope-list li::before { content: '-  '; color: var(--muted-2); }
 
 .assumption-bar {
   display: flex;
