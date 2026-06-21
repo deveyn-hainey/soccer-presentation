@@ -26,6 +26,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 52px;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 body {
@@ -97,6 +99,8 @@ strong { font-weight: 700; }
   flex-direction: column;
   justify-content: center;
   padding: clamp(4rem, 6vw, 5rem) 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .s-white {
@@ -106,6 +110,8 @@ strong { font-weight: 700; }
   flex-direction: column;
   justify-content: center;
   padding: clamp(4rem, 6vw, 5rem) 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* ================================================
@@ -182,6 +188,8 @@ p { color: var(--text); }
   flex-direction: column;
   justify-content: center;
   padding: clamp(4rem, 6vw, 5rem) 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .hero-wrap {
@@ -1035,6 +1043,8 @@ p { color: var(--text); }
   flex-direction: column;
   justify-content: center;
   padding: clamp(4rem, 6vw, 5rem) 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .closing-kicker {
