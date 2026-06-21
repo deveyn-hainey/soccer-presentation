@@ -1261,6 +1261,36 @@ p { color: var(--text); }
   margin-bottom: 1.25rem;
 }
 
+.demo-hero-shot {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.demo-hero-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--navy);
+}
+
+.demo-hero-shot figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.demo-hero-shot figcaption strong {
+  color: var(--text);
+}
+
 /* ================================================
    FUTURE
 ================================================ */
