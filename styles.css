@@ -456,9 +456,7 @@ p { color: var(--text); }
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  flex: 1;
-  min-height: 0;
-  align-content: start;
+  align-items: stretch;
 }
 
 .user-card {
@@ -491,6 +489,7 @@ p { color: var(--text); }
 .needs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
   gap: 1rem;
   flex: 1;
   min-height: 0;
@@ -523,8 +522,9 @@ p { color: var(--text); }
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   align-items: stretch;
 }
 
@@ -572,6 +572,7 @@ p { color: var(--text); }
 .success-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 0.85rem;
   flex: 1;
   min-height: 0;
@@ -595,6 +596,7 @@ p { color: var(--text); }
 .ls-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
   gap: 1.25rem;
   flex: 1;
   min-height: 0;
@@ -650,11 +652,11 @@ p { color: var(--text); }
 .scope-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
   flex: 1;
   min-height: 0;
-  align-content: start;
 }
 
 .scope-col {
@@ -731,6 +733,7 @@ p { color: var(--text); }
 .data-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
   gap: 1.25rem;
   flex: 1;
   min-height: 0;
@@ -887,8 +890,9 @@ p { color: var(--text); }
 .ml-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   flex: 1;
   min-height: 0;
 }
@@ -1008,8 +1012,9 @@ p { color: var(--text); }
 .ch-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   flex: 1;
   min-height: 0;
 }
@@ -1058,6 +1063,7 @@ p { color: var(--text); }
 .future-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1.25rem;
   flex: 1;
   min-height: 0;
