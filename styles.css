@@ -1639,12 +1639,12 @@ p { color: var(--text); }
 ================================================ */
 @media (min-width: 1200px) {
   body {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .wrap,
   .diag-outer {
-    max-width: 1420px;
+    max-width: 1520px;
     padding-left: clamp(2rem, 5vw, 4.5rem);
     padding-right: clamp(2rem, 5vw, 4.5rem);
   }
@@ -1678,8 +1678,8 @@ p { color: var(--text); }
   }
 
   .section-intro {
-    max-width: 720px;
-    font-size: 1.2rem;
+    max-width: 780px;
+    font-size: 1.24rem;
   }
 
   .hero-lede {
@@ -1692,7 +1692,7 @@ p { color: var(--text); }
   }
 
   .task-card p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 
   .af-header,
@@ -1719,20 +1719,72 @@ p { color: var(--text); }
     font-size: 0.9rem;
   }
 
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.12rem;
+  }
+
+  .user-card,
+  .need-item,
+  .ls-card,
+  .scope-meta-item,
+  .scope-col,
+  .data-card,
+  .metric-card,
+  .ml-card,
+  .ch-card,
+  .eval-card,
+  .future-card,
+  .coverage-card,
+  .block-node,
+  .trade-card,
+  .validation-block,
+  .xg-block,
+  .hybrid-block {
+    padding: 1.45rem;
+  }
+
+  .coverage-grid,
+  .needs-grid,
+  .ls-grid,
+  .data-grid,
+  .metric-grid,
+  .ml-grid,
+  .ch-grid,
+  .eval-grid,
+  .future-grid,
+  .trade-grid {
+    gap: 1.1rem;
+  }
+
   .dot-list li,
   .check-list li,
   .scope-list li,
+  .scope-meta-item span:not(.meta-label),
+  .gap-sub,
+  .success-sub,
   .card-note,
+  .need-item strong,
   .need-item p,
+  .gap-statement,
   .success-item,
+  .coverage-card p,
+  .block-node p,
   .data-card p,
   .data-output,
   .metric-card p,
   .arch-item p,
+  .ml-role,
   .ml-note,
+  .hybrid-col strong,
   .hybrid-col p,
   .xg-block p,
+  .trade-card span,
   .trade-card p,
+  .production-callout strong,
   .production-callout p,
   .ch-card p,
   .validation-block p,
@@ -1743,12 +1795,23 @@ p { color: var(--text); }
   .dbox-sub,
   .dbox-quad span,
   .out-item span {
-    font-size: 1rem;
+    font-size: 1.08rem;
   }
 
-  .coverage-card p,
-  .block-node p {
-    font-size: 0.95rem;
+  .badge,
+  .tag,
+  .data-badge,
+  .future-tag,
+  .metric-card span,
+  .eval-card span,
+  .block-node span,
+  .coverage-card span,
+  .ml-model,
+  .ch-num,
+  .model-chip,
+  .opt-chip,
+  .pipe-num {
+    font-size: 0.78rem;
   }
 
   .coverage-card strong,
@@ -1762,7 +1825,25 @@ p { color: var(--text); }
   .pipe-title,
   .dbox-title,
   .out-item strong {
-    font-size: 1.05rem;
+    font-size: 1.14rem;
+  }
+
+  .pipe-sub,
+  .dbox-file,
+  .dv-arrow {
+    font-size: 0.98rem;
+  }
+
+  .out-item strong {
+    font-size: 1.08rem;
+  }
+
+  .demo-hero-shot {
+    max-width: 1120px;
+  }
+
+  .demo-hero-shot img {
+    height: min(58vh, 620px);
   }
 }
 
