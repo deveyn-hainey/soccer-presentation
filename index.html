@@ -328,34 +328,39 @@
       <div class="wrap">
         <div class="section-num">06 — The Demo</div>
         <h2>Here's what it actually produces.</h2>
-        <p class="section-intro">
-          Upload a 1–3 minute broadcast clip. The system runs the full pipeline
-          and returns structured coaching output. Here are the three moments in
-          that flow worth seeing.
-        </p>
 
-        <div class="demo-grid">
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 1</div>
-            <div class="slot-title">Upload &amp; Extract</div>
-            <div class="slot-sub">Drop a clip. Frames extracted instantly in the browser — no upload wait.</div>
-          </div>
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 2</div>
-            <div class="slot-title">Live Analysis</div>
-            <div class="slot-sub">Watch the pipeline run: frame batches processing, events flagging, pitch map building.</div>
-          </div>
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 3</div>
-            <div class="slot-title">Coaching Output</div>
-            <div class="slot-sub">Insights, xG, outcome projection, and a plain-English clip summary — ready to act on.</div>
+        <!-- ── VIDEO EMBED ──────────────────────────────
+             To embed a Loom recording:
+               <iframe src="https://www.loom.com/embed/YOUR_ID" ...></iframe>
+             To use a local file:
+               <video src="demo.mp4" controls></video>
+             To use a YouTube link:
+               <iframe src="https://www.youtube.com/embed/YOUR_ID" ...></iframe>
+        ─────────────────────────────────────────────── -->
+        <div class="video-embed">
+          <!-- PASTE YOUR EMBED HERE — remove the placeholder div below -->
+          <div class="video-placeholder">
+            <div class="vp-icon">▶</div>
+            <div class="vp-label">Paste Loom / YouTube embed or &lt;video src="demo.mp4"&gt; here</div>
           </div>
         </div>
 
-        <div class="demo-note">
-          <strong>Live demo here.</strong> The screenshot slots above are placeholders —
-          replace with actual screenshots from the app, or run the live demo at this point
-          in the presentation and come back to the architecture section to explain how it works.
+        <div class="demo-steps">
+          <div class="demo-step">
+            <span class="ds-num">01</span>
+            <strong>Upload &amp; Extract</strong>
+            <p>Drop a clip. Frames extracted in the browser — no upload wait.</p>
+          </div>
+          <div class="demo-step">
+            <span class="ds-num">02</span>
+            <strong>Live Analysis</strong>
+            <p>Watch the pipeline run: frames analyzed, events flagged, pitch map built.</p>
+          </div>
+          <div class="demo-step">
+            <span class="ds-num">03</span>
+            <strong>Coaching Output</strong>
+            <p>Insights, xG, outcome projection, and a plain-English narrative — ready to act on.</p>
+          </div>
         </div>
       </div>
     </section>
