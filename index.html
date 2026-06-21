@@ -17,6 +17,7 @@
         <a href="#scope">Scope</a>
         <a href="#data">Data</a>
         <a href="#architecture">Architecture</a>
+        <a href="#pipeline">Pipeline</a>
         <a href="#ml">ML &amp; AI</a>
         <a href="#next">What's Next</a>
       </nav>
@@ -28,19 +29,21 @@
     <section class="hero">
       <div class="wrap">
         <div class="section-num">01 — Introduction</div>
-        <h1>The internet<br>is Legos.</h1>
+        <h1>How I went about<br>SoccerVision.</h1>
         <p class="hero-lede">
-          Powerful building blocks now exist at every layer — vision models, language
-          models, cloud infrastructure, open APIs. The job isn't to build everything
-          from scratch. It's to know which pieces exist, how to connect them, and
-          what problem they can solve together.
+          Think about everything available to us right now — AI vision APIs, language
+          models, cloud infrastructure, open-source CV models. It's like a box of
+          Legos. Powerful pieces, already built. The job isn't to reinvent them. It's
+          to know which ones exist, understand how they connect, and figure out what
+          problem you can solve by putting them together the right way.
         </p>
         <div class="task-card">
           <span class="task-label">The Task</span>
           <p>
             Explore the potential of using machine learning and AI to analyze
-            videos of soccer matches and extract valuable insights. Here's how I
-            approached it — starting with the people, not the technology.
+            videos of soccer matches and extract valuable insights. I wanted to
+            tackle this problem by assembling the right blocks — not building from
+            scratch.
           </p>
         </div>
       </div>
@@ -399,11 +402,142 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         08 — ML & AI
+         08 — PIPELINE DEEP DIVE
     ─────────────────────────────────────── -->
-    <section id="ml" class="s-gray reveal">
+    <section id="pipeline" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">08 — ML &amp; AI Techniques</div>
+        <div class="section-num">08 — Pipeline Deep Dive</div>
+        <h2>Every file, every model call,<br>every step.</h2>
+        <p class="section-intro">
+          A full map of what runs when you upload a clip — broken down by the
+          actual files in the codebase, the AI models they call, and what each
+          one returns.
+        </p>
+      </div>
+
+      <!-- Diagram lives outside .wrap so it can breathe -->
+      <div class="diag-outer">
+
+        <!-- ── BROWSER ── -->
+        <div class="diag-swim swim-browser">
+          <div class="swim-label">Browser · app/page.tsx</div>
+          <div class="swim-row">
+            <div class="dbox">
+              <div class="dbox-title">Video Upload</div>
+              <div class="dbox-sub">MP4 · WebM · MOV</div>
+            </div>
+            <div class="dh-arrow">→</div>
+            <div class="dbox">
+              <div class="dbox-title">Keyframe Extraction</div>
+              <div class="dbox-sub">Canvas API · 1280×720 · every 4–6 s · no video sent to server</div>
+            </div>
+            <div class="dh-arrow">→</div>
+            <div class="dbox">
+              <div class="dbox-title">4 Concurrent Workers</div>
+              <div class="dbox-sub">Batches frames in groups of 4 · client-side merge + scoreboard synthesis after all batches</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-arrow">↓ JPEG frames (base64) per worker</div>
+
+        <!-- ── FRAME LAYER ── -->
+        <div class="diag-swim swim-server">
+          <div class="swim-label">Server — Frame Layer</div>
+          <div class="swim-row">
+            <div class="dbox dbox-model">
+              <div class="model-chip chip-sonnet">Claude Sonnet 4.6</div>
+              <div class="dbox-file">api/analyze/frame</div>
+              <div class="dbox-sub">Scans all players (both teams) · Ball position 0–100 coords · Possession · Events · Scoreboard value per frame</div>
+            </div>
+            <div class="dh-plus">+</div>
+            <div class="dbox">
+              <div class="dbox-file">api/analyze/pitch</div>
+              <div class="dbox-title">Camera Calibration</div>
+              <div class="dbox-sub">Estimates which pitch slice is visible · 40/60 blend smoothing between frames · Snaps on delta &gt; 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-arrow-row">
+          <div class="dv-arrow">↓ FrameData[ ] + pitchWindow[ ] merged client-side</div>
+          <div class="dbox-optional">
+            <div class="opt-chip">Optional</div>
+            <div class="dbox-title">YOLO Worker</div>
+            <div class="dbox-sub">Local GPU · dense tracking at 15 fps · ByteTrack-style player ID persistence · pipes into event verification</div>
+          </div>
+        </div>
+
+        <!-- ── EVENT LAYER ── -->
+        <div class="diag-swim swim-server">
+          <div class="swim-label">Server — Event Layer · ~1,140 lines</div>
+          <div class="swim-row">
+            <div class="dbox dbox-model dbox-wide">
+              <div class="model-chip chip-sonnet">Claude Sonnet 4.6</div>
+              <div class="dbox-file">api/analyze/events</div>
+              <div class="dbox-quad">
+                <span>Geometry pass pre-flags ~40 candidate moments: goal-line proximity, shot zone entry, corner triggers, direction reversals, celebration clusters, camera cuts</span>
+                <span>Claude reviews each candidate window with the actual frame image + any YOLO metadata to confirm or reject</span>
+                <span>Scoreboard read independently every frame — goal synthesis fires when the score number increases</span>
+                <span>Fallback events tagged <code>low_confidence</code> when Claude skips a window · Truncated JSON auto-repaired</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-arrow">↓ MatchEvent[ ] deduplicated</div>
+
+        <!-- ── SYNTHESIS LAYER ── -->
+        <div class="diag-swim swim-server">
+          <div class="swim-label">Server — Synthesis</div>
+          <div class="swim-row">
+            <div class="dbox">
+              <div class="dbox-file">api/analyze/summarize</div>
+              <div class="dbox-sub">Deduplicates events across time &amp; position windows · Builds per-team stats: possession, passes, shots, xG, distance, heatmap · Scoreboard delta → clip-scoped goals · Selects up to 12 key frames</div>
+            </div>
+            <div class="dh-arrow">→</div>
+            <div class="dbox dbox-model dbox-opus">
+              <div class="model-chip chip-opus">Claude Opus 4.8</div>
+              <div class="dbox-file">lib/visionSynthesis.ts</div>
+              <div class="dbox-sub">Single call per analysis · System prompt cached (cache_control: ephemeral) · Key frames + all metrics → insights, outcome projection, per-shot xG, 2–3 sentence narrative</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-arrow">↓ MatchAnalysis JSON</div>
+
+        <!-- ── OUTPUT ── -->
+        <div class="diag-output">
+          <div class="out-item">
+            <strong>4–5 Coaching Insights</strong>
+            <span>Tactical · Defensive · Attacking · Physical</span>
+          </div>
+          <div class="out-sep"></div>
+          <div class="out-item">
+            <strong>Outcome Projection</strong>
+            <span>Home win / Draw / Away win — sums to 100%</span>
+          </div>
+          <div class="out-sep"></div>
+          <div class="out-item">
+            <strong>Shot xG</strong>
+            <span>Vision-grounded Expected Goals per shot</span>
+          </div>
+          <div class="out-sep"></div>
+          <div class="out-item">
+            <strong>Clip Summary</strong>
+            <span>2–3 sentence plain-English narrative</span>
+          </div>
+        </div>
+
+      </div><!-- /diag-outer -->
+    </section>
+
+    <!-- ──────────────────────────────────────
+         09 — ML & AI
+    ─────────────────────────────────────── -->
+    <section id="ml" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">09 — ML &amp; AI Techniques</div>
         <h2>Choosing the right<br>tool for each job.</h2>
         <p class="section-intro">
           Different stages need different capabilities. The key is matching the
@@ -478,11 +612,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         09 — CHALLENGES
+         10 — CHALLENGES
     ─────────────────────────────────────── -->
-    <section id="challenges" class="s-white reveal">
+    <section id="challenges" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">09 — Challenges &amp; Validation</div>
+        <div class="section-num">10 — Challenges &amp; Validation</div>
         <h2>What makes this<br>genuinely hard.</h2>
 
         <div class="ch-grid">
@@ -523,11 +657,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         10 — WHAT'S NEXT
+         11 — WHAT'S NEXT
     ─────────────────────────────────────── -->
-    <section id="next" class="s-gray reveal">
+    <section id="next" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">10 — What This Enables</div>
+        <div class="section-num">11 — What This Enables</div>
         <h2>This is the foundation.<br>Here's where it goes.</h2>
         <p class="section-intro">
           The demo handles short clips. With more data and infrastructure, the
