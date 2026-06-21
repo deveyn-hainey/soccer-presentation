@@ -3,438 +3,576 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SoccerVision Presentation</title>
-    <meta
-      name="description"
-      content="A scrollable presentation narrative for the SoccerVision task interview."
-    >
+    <title>SoccerVision — AI Match Analysis</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="topbar" aria-label="Presentation navigation">
-      <a class="brand" href="#top" aria-label="Back to top">
-        <span class="brand-mark"></span>
-        SoccerVision
-      </a>
+
+    <header class="topbar">
+      <span class="brand">SoccerVision</span>
       <nav class="nav-links">
+        <a href="#users">Users</a>
         <a href="#problem">Problem</a>
+        <a href="#landscape">Landscape</a>
         <a href="#scope">Scope</a>
-        <a href="#experience">Experience</a>
+        <a href="#data">Data</a>
         <a href="#architecture">Architecture</a>
-        <a href="#built">Built</a>
-        <a href="#evaluation">Evaluation</a>
+        <a href="#ml">ML &amp; AI</a>
+        <a href="#next">What's Next</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero section-panel">
-        <div class="hero-copy">
-          <p class="eyebrow">Task Interview Presentation</p>
-          <h1>From Match Footage To Coaching Decisions</h1>
-          <p class="hero-lede">
-            How I approached building an AI soccer analysis product: first by
-            understanding the coaching workflow, then by narrowing scope,
-            designing the experience, proving a shippable POC, and naming the
-            technical tradeoffs honestly.
-          </p>
-          <div class="hero-actions" aria-label="Primary presentation links">
-            <a class="button primary" href="#story">Start The Story</a>
-            <a class="button ghost" href="#kpis">Jump To KPIs</a>
-          </div>
-        </div>
-
-        <div class="match-card" aria-label="Soccer analytics visual">
-          <div class="score-strip">
-            <span>POC Clip</span>
-            <strong>Video In to Insights Out</strong>
-          </div>
-          <div class="mini-pitch">
-            <span class="line midline"></span>
-            <span class="line box left-box"></span>
-            <span class="line box right-box"></span>
-            <span class="dot home h1"></span>
-            <span class="dot home h2"></span>
-            <span class="dot home h3"></span>
-            <span class="dot home h4"></span>
-            <span class="dot away a1"></span>
-            <span class="dot away a2"></span>
-            <span class="dot away a3"></span>
-            <span class="dot away a4"></span>
-            <span class="ball"></span>
-          </div>
-          <div class="insight-stack">
-            <article>
-              <span class="tag urgent">High Value</span>
-              <p>Opposition presses short goal kicks.</p>
-            </article>
-            <article>
-              <span class="tag">Pattern</span>
-              <p>Right channel opens after midfield turnovers.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="story" class="story-intro">
-        <p class="section-kicker">The Through Line</p>
-        <h2>I treated the assignment like a product discovery sprint.</h2>
-        <p>
-          The goal was not to prove that soccer data is interesting. The goal
-          was to show how video analysis becomes a usable coaching tool: who it
-          helps, what it should ignore for now, what the first prototype can
-          prove, and what has to change before production.
+    <!-- ──────────────────────────────────────
+         01 — HERO
+    ─────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="section-num">01 — Introduction</div>
+        <h1>The internet<br>is Legos.</h1>
+        <p class="hero-lede">
+          Powerful building blocks now exist at every layer — vision models, language
+          models, cloud infrastructure, open APIs. The job isn't to build everything
+          from scratch. It's to know which pieces exist, how to connect them, and
+          what problem they can solve together.
         </p>
-      </section>
+        <div class="task-card">
+          <span class="task-label">The Task</span>
+          <p>
+            Explore the potential of using machine learning and AI to analyze
+            videos of soccer matches and extract valuable insights. Here's how I
+            approached it — starting with the people, not the technology.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <section id="problem" class="section-panel split">
-        <div>
-          <p class="section-kicker">Step 1</p>
-          <h2>Start With The People Making Decisions</h2>
-          <p>
-            The primary users are coaches and analysts. Players matter too, but
-            in a real club the analyst often sits between raw data and the way a
-            coach or player receives it.
-          </p>
-          <p>
-            That shaped the product thesis: the problem is not a lack of
-            numbers. It is the gap between match events, patterns across 90
-            minutes, and the plain-English recommendations a coach can trust.
-          </p>
-        </div>
-        <div class="decision-grid">
-          <div>
-            <span>Today</span>
-            <strong>Manual tagging, fragmented data, slow review</strong>
-          </div>
-          <div>
-            <span>Need</span>
-            <strong>Actionable insight linked to exact video moments</strong>
-          </div>
-          <div>
-            <span>Success</span>
-            <strong>Useful at halftime, pre-match prep, and team review</strong>
-          </div>
-        </div>
-      </section>
+    <!-- ──────────────────────────────────────
+         02 — USERS
+    ─────────────────────────────────────── -->
+    <section id="users" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">02 — Who We're Building For</div>
+        <h2>Start with the people,<br>not the technology.</h2>
+        <p class="section-intro">
+          Before writing a single line of code, the first question was: who
+          actually needs this, and what do they do with it?
+        </p>
 
-      <section class="section-panel contrast">
-        <div class="section-heading">
-          <p class="section-kicker">Step 2</p>
-          <h2>Find The Opening In The Market</h2>
-          <p>
-            I compared established tools with AI-first products and kept coming
-            back to the same product gap.
-          </p>
-        </div>
-        <div class="comparison">
-          <article>
-            <h3>Legacy Pro Tools</h3>
-            <p>Powerful and data rich, but built for clubs with analyst teams, budgets, and workflow overhead.</p>
-          </article>
-          <article>
-            <h3>AI-First Tools</h3>
-            <p>Accessible and useful for clips or heatmaps, but still leave the tactical conclusion to a person.</p>
-          </article>
-          <article class="highlight">
-            <h3>SoccerVision</h3>
-            <p>Detect what happened, explain what it means, and show exactly where it happened in the footage.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="scope" class="section-panel">
-        <div class="section-heading">
-          <p class="section-kicker">Step 3</p>
-          <h2>Narrow The POC Until It Can Ship</h2>
-          <p>
-            I scoped the first version around standard broadcast clips because
-            that footage is familiar, accessible, and removes camera hardware as
-            an early variable.
-          </p>
-        </div>
-        <div class="scope-board">
-          <article>
-            <h3>In Scope</h3>
-            <ul>
-              <li>2-3 minute post-match clips</li>
-              <li>Keyframe extraction in the browser</li>
-              <li>Player and ball position estimates</li>
-              <li>Shots, passes, tackles, set pieces</li>
-              <li>Plain-English coaching insights</li>
+        <div class="user-grid">
+          <div class="user-card primary-card">
+            <div class="badge green-badge">Primary</div>
+            <h3>Coaching Staff</h3>
+            <ul class="dot-list">
+              <li>Head Coach</li>
+              <li>Assistant Coach</li>
+              <li>Tactical Analyst</li>
             </ul>
-          </article>
-          <article>
-            <h3>Phase 2</h3>
-            <ul>
-              <li>Live stream support</li>
-              <li>Full 90 minute match analysis</li>
-              <li>Multi-camera workflows</li>
-              <li>Biometric and sensor-based data</li>
-              <li>Player portals and localization</li>
+            <p class="card-note">
+              They make decisions about tactics, formations, and training focus.
+              They need evidence, fast.
+            </p>
+          </div>
+          <div class="user-card secondary-card">
+            <div class="badge gray-badge">Secondary</div>
+            <h3>Players</h3>
+            <ul class="dot-list">
+              <li>First-team squad</li>
+              <li>Academy &amp; development</li>
             </ul>
-          </article>
+            <p class="card-note">
+              They receive filtered insights from coaching staff — specific
+              clips, position feedback, development targets.
+            </p>
+          </div>
         </div>
-      </section>
 
-      <section class="section-panel data-layers">
-        <div>
-          <p class="section-kicker">Step 4</p>
-          <h2>Separate Data Into Layers</h2>
-          <p>
-            I used a three-layer framework so the team could see the difference
-            between raw detection, derived metrics, and the actual product
-            value: interpretation.
-          </p>
-        </div>
-        <div class="pyramid" aria-label="Three-layer data framework">
-          <div>
-            <span>Layer 3</span>
-            <strong>Coaching Insights</strong>
-            <p>Patterns, player summaries, tactical recommendations.</p>
-          </div>
-          <div>
-            <span>Layer 2</span>
-            <strong>Derived Metrics</strong>
-            <p>Heatmaps, possession, pass completion, distance covered.</p>
-          </div>
-          <div>
-            <span>Layer 1</span>
-            <strong>Raw Video Data</strong>
-            <p>Players, ball, team colors, movement, timestamps.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section-panel dashboard-section">
-        <div class="section-heading">
-          <p class="section-kicker">Step 5</p>
-          <h2>Design The Coaching Experience First</h2>
-          <p>
-            The interface has to feel like a match room tool, not a science
-            project. The dashboard is dark, fast to scan, and anchored by the
-            pitch because that is the shared visual language for every user.
-          </p>
-        </div>
-        <div class="dashboard-mock">
-          <div class="pitch-panel">
-            <div class="panel-title">Pitch View</div>
-            <div class="full-pitch">
-              <span class="center-circle"></span>
-              <span class="dot home p1"></span>
-              <span class="dot home p2"></span>
-              <span class="dot home p3"></span>
-              <span class="dot away p4"></span>
-              <span class="dot away p5"></span>
-              <span class="dot away p6"></span>
-              <span class="heat-zone"></span>
+        <div class="needs-block">
+          <div class="block-label">What they actually need from a tool</div>
+          <div class="needs-grid">
+            <div class="need-item">
+              <strong>Speed</strong>
+              <p>Insights before the next session, not the next day</p>
+            </div>
+            <div class="need-item">
+              <strong>Specificity</strong>
+              <p>The 3 moments that mattered — not 300 data points</p>
+            </div>
+            <div class="need-item">
+              <strong>Language</strong>
+              <p>Insights that map to decisions coaches already make</p>
+            </div>
+            <div class="need-item">
+              <strong>Context</strong>
+              <p>Not just what happened, but where and why</p>
             </div>
           </div>
-          <div class="timeline-panel">
-            <div class="panel-title">Event Timeline</div>
-            <button>12:08 Shot saved</button>
-            <button>18:42 Press trigger</button>
-            <button>26:15 Set piece</button>
-          </div>
-          <div class="stats-panel">
-            <div class="panel-title">Team Stats</div>
-            <span style="--value: 64%">Possession</span>
-            <span style="--value: 48%">Passes</span>
-            <span style="--value: 71%">Recoveries</span>
-          </div>
-          <div class="ai-panel">
-            <div class="panel-title">AI Coaching Insights</div>
-            <p>Priority 1: protect the right channel after turnovers.</p>
-            <p>Priority 2: left back workload drops late in the clip.</p>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="architecture" class="section-panel split">
-        <div>
-          <p class="section-kicker">Step 6</p>
-          <h2>Choose A POC Architecture That Proves The Loop</h2>
-          <p>
-            The prototype keeps video processing lightweight: the browser pulls
-            keyframes, sends them to a serverless API, Claude Vision returns
-            structured analysis, and the dashboard renders the result.
-          </p>
-          <p>
-            This proves the important loop without pretending it is the final
-            production architecture.
-          </p>
-        </div>
-        <ol class="flow-list">
-          <li>Upload MP4, WebM, or MOV</li>
-          <li>Extract keyframes with Canvas API</li>
-          <li>Send JPEG frames to serverless route</li>
-          <li>Analyze frames with Claude Vision</li>
-          <li>Aggregate into MatchAnalysis JSON</li>
-          <li>Render coaching dashboard in Next.js</li>
-        </ol>
-      </section>
+    <!-- ──────────────────────────────────────
+         03 — PROBLEM
+    ─────────────────────────────────────── -->
+    <section id="problem" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">03 — The Problem</div>
+        <h2>Coaches have strong instincts.<br>Data is fragmented.</h2>
 
-      <section id="built" class="section-panel">
-        <p class="section-kicker">Under The Hood</p>
-        <h2>What The Demo Does</h2>
-        <p>Five stages run every time you upload a clip. Each one does a specific job, then passes its output to the next.</p>
-        <ol class="flow-list" style="margin-top:1.5rem">
-          <li><strong>Keyframes captured in the browser.</strong> The full video never leaves your device. One frame is pulled every 4–6 seconds at high resolution — a deliberate choice, because the ball becomes too small to detect at half the size.</li>
-          <li><strong>Four frames analyzed at once.</strong> Each frame goes to Claude Vision with instructions to locate every player from both teams, the ball, possession, and any match events. Four run in parallel so total time is a quarter of what it would be back-to-front.</li>
-          <li><strong>Camera window calibrated.</strong> A separate AI call estimates which slice of the pitch is visible in each frame — left box, center, full-pitch wide. Without this, the same screen position means different things at different zoom levels.</li>
-          <li><strong>Key moments reviewed.</strong> The system pre-flags what is worth checking using geometry: ball near the goal line, players clustering near goal, sudden direction reversals. Claude verifies those specific windows. Scoreboards are also read in every frame and compared — a goal is confirmed the moment the number goes up, even if no visual goal cue was caught.</li>
-          <li><strong>Coaching insights generated.</strong> One call to Claude's most capable model receives the full picture: match statistics, shot positions, and up to 12 curated frames from the clip. It returns plain-English coaching insights, a win/draw/loss projection, and expected goals grounded in what it can actually see — keeper position, shot angle, defenders in the way.</li>
-        </ol>
-      </section>
-
-      <section class="section-panel split">
-        <div>
-          <p class="section-kicker">Why It Takes Time</p>
-          <h2>Honest About Latency</h2>
-          <p>
-            A 2-minute clip takes 3–7 minutes to process. That is not a bug — it
-            is the cost of calling an AI API many times in sequence. Each call
-            carries 8–15 seconds of network and model time.
-          </p>
-          <p>
-            Running four requests at once already cuts total time by 75% compared
-            to doing them one after another. The remaining wait comes from the
-            number of rounds: frame analysis, camera calibration, event review,
-            and synthesis are each a separate trip to the API.
-          </p>
-          <p>
-            The Phase 2 architecture solves this by moving detection to a local
-            GPU model. Claude is called once at the end on aggregated data, not
-            once per frame. That is where processing time drops from minutes to
-            seconds.
-          </p>
-        </div>
-        <div>
-          <p class="section-kicker">With Access To More Data</p>
-          <h2>What Becomes Possible</h2>
-          <div class="future-grid">
-            <article>
-              <span>Player ETL</span>
-              <strong>Named player tracking</strong>
-              <p>Jersey number recognition plus a roster feed turns anonymous dots into named players. Heatmaps and sprint data per individual across a full season.</p>
-            </article>
-            <article>
-              <span>League ETL</span>
-              <strong>Cross-match patterns</strong>
-              <p>Each analysis outputs structured data. Run it across a season and aggregate by team or competition — pressing tendency home vs away, shot zones, defensive line shifts over time.</p>
-            </article>
-            <article>
-              <span>Formation</span>
-              <strong>Automatic shape detection</strong>
-              <p>Formation is currently fixed. A full 90-minute feed provides enough positional data to infer formation automatically and track mid-game shifts.</p>
-            </article>
-            <article>
-              <span>Live</span>
-              <strong>Real-time coaching alerts</strong>
-              <p>The local detection worker already exists. Swap uploaded clips for a live feed and a message queue and the same stack delivers alerts in real time.</p>
-            </article>
+        <div class="two-col">
+          <div>
+            <div class="block-label">The current reality</div>
+            <ul class="check-list">
+              <li>Video review is manual and time-intensive — analysts watch hours of footage to find key moments</li>
+              <li>Stats tools give numbers, not context — possession percentages don't explain why the press broke down</li>
+              <li>No connection between what happened on the pitch and <em>why</em> it happened</li>
+              <li>Tactical feedback takes days to prepare; by then the moment has lost its impact</li>
+            </ul>
+          </div>
+          <div class="gap-card">
+            <div class="block-label">The gap this creates</div>
+            <p class="gap-statement">
+              Coaches <em>know</em> something went wrong. Proving it — and
+              showing players — takes hours they don't have.
+            </p>
+            <p class="gap-sub">
+              The question isn't whether AI can help. It's whether it can be
+              assembled in a way that fits a real coaching workflow.
+            </p>
           </div>
         </div>
-      </section>
 
-      <section class="section-panel challenge-section">
-        <div class="section-heading">
-          <p class="section-kicker">Step 7</p>
-          <h2>Name The Hard Parts</h2>
-          <p>
-            Football video analysis is difficult. I would rather earn trust by
-            showing the constraints than overpromise a magical model.
-          </p>
-        </div>
-        <div class="challenge-grid">
-          <article>
-            <span>01</span>
-            <h3>Homography</h3>
-            <p>Camera motion and cuts make screen coordinates hard to map to real pitch coordinates.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Occlusion</h3>
-            <p>Players overlap constantly, especially in set pieces and midfield pressure.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Real Time</h3>
-            <p>Live analysis needs low latency, high throughput, and persistent infrastructure.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Accuracy vs. Speed</h3>
-            <p>The right production model must be fast enough to process a match and accurate enough to trust.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="evaluation" class="section-panel model-section">
-        <div>
-          <p class="section-kicker">Step 8</p>
-          <h2>Use The Right AI At The Right Layer</h2>
-          <p>
-            Claude Vision is the right POC choice because it gets from video to
-            structured insight quickly without training data or custom
-            infrastructure. It is not the final answer for production tracking.
-          </p>
-        </div>
-        <div class="model-table" role="table" aria-label="POC to phase 2 model evolution">
-          <div role="row">
-            <span role="columnheader">Layer</span>
-            <span role="columnheader">POC</span>
-            <span role="columnheader">Phase 2</span>
-          </div>
-          <div role="row">
-            <span>Detection</span>
-            <span>Claude Vision</span>
-            <span>YOLO-family CV model</span>
-          </div>
-          <div role="row">
-            <span>Tracking</span>
-            <span>Per-frame estimates</span>
-            <span>ByteTrack or DeepSORT</span>
-          </div>
-          <div role="row">
-            <span>Insight</span>
-            <span>Vision + reasoning combined</span>
-            <span>Claude over structured match data</span>
+        <div class="success-block">
+          <h3>What success looks like</h3>
+          <p class="success-sub">Not dashboards. Decisions.</p>
+          <div class="success-grid">
+            <div class="success-item">Surfaces the 2–3 moments that mattered in a clip</div>
+            <div class="success-item">Shows possession flow, not just percentages</div>
+            <div class="success-item">Gives coaches something to say in the next training session</div>
+            <div class="success-item">Fast enough to use at halftime</div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="kpis" class="section-panel kpi-section">
-        <div class="section-heading">
-          <p class="section-kicker">Step 9</p>
-          <h2>Define What The POC Should Teach Us</h2>
-          <p>
-            The POC is not a final report card. It is a learning system. These
-            KPIs show whether the product is accurate, usable, scalable, and
-            worth returning to after the first demo.
-          </p>
-        </div>
-        <div class="kpi-grid">
-          <article><span>System</span><strong>Detection Accuracy</strong><p>Can we trust the underlying match data?</p></article>
-          <article><span>System</span><strong>Processing Latency</strong><p>Does it fit the coaching workflow?</p></article>
-          <article><span>System</span><strong>Cost Per Analysis</strong><p>Can it scale beyond the prototype?</p></article>
-          <article><span>System</span><strong>Frame Coverage</strong><p>Are we sampling the moments that matter?</p></article>
-          <article><span>Product</span><strong>Insight Actionability</strong><p>Do coaches actually act on the recommendation?</p></article>
-          <article><span>Product</span><strong>Time Saved</strong><p>What is the ROI against manual tagging?</p></article>
-          <article><span>Product</span><strong>Dashboard Engagement</strong><p>Which panels earn their place?</p></article>
-          <article><span>Product</span><strong>User Retention</strong><p>Is this a product or just a demo?</p></article>
-        </div>
-      </section>
-
-      <section class="closing section-panel">
-        <p class="section-kicker">Close</p>
-        <h2>The product promise is simple.</h2>
-        <p>
-          We do not just detect what happened. We explain what it means, tie it
-          to the exact match moment, and make it usable for coaches without
-          requiring a data science team in the room.
+    <!-- ──────────────────────────────────────
+         04 — LANDSCAPE
+    ─────────────────────────────────────── -->
+    <section id="landscape" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">04 — The Landscape</div>
+        <h2>What already exists,<br>and where it falls short.</h2>
+        <p class="section-intro">
+          Understanding the gap between what's possible and what's being used
+          defines where to build.
         </p>
-      </section>
-    </main>
+
+        <div class="ls-grid">
+          <div class="ls-card">
+            <div class="badge amber-badge">Legacy Tools</div>
+            <h4>Wyscout · InStat · Opta</h4>
+            <ul class="dot-list">
+              <li>Deep historical data and event tagging</li>
+              <li>Widely trusted at professional level</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag t-red">Manual tagging</span>
+              <span class="tag t-red">Time-delayed</span>
+              <span class="tag t-red">No narrative</span>
+            </div>
+          </div>
+          <div class="ls-card">
+            <div class="badge purple-badge">Current AI</div>
+            <h4>CV-Based Trackers</h4>
+            <ul class="dot-list">
+              <li>Automatic player &amp; ball tracking</li>
+              <li>High-frequency positional data</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag t-red">No coaching output</span>
+              <span class="tag t-red">No context</span>
+              <span class="tag t-red">Expensive pipeline</span>
+            </div>
+          </div>
+          <div class="ls-card ls-featured">
+            <div class="badge green-badge">SoccerVision</div>
+            <h4>AI That Watches &amp; Interprets</h4>
+            <ul class="dot-list">
+              <li>Vision models <em>see</em> what's on the pitch</li>
+              <li>Language models <em>explain</em> what it means</li>
+              <li>Output is coaching-ready, not analyst-ready</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag t-green">Fast</span>
+              <span class="tag t-green">Narrative output</span>
+              <span class="tag t-green">Accessible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         05 — SCOPE
+    ─────────────────────────────────────── -->
+    <section id="scope" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">05 — Scope</div>
+        <h2>Know what you're building.<br>And what you're not.</h2>
+
+        <div class="scope-meta">
+          <div class="scope-meta-item">
+            <span class="meta-label">Footage type</span>
+            <span>Standard broadcast TV — most accessible, highest quality</span>
+          </div>
+          <div class="scope-meta-item">
+            <span class="meta-label">Clip length</span>
+            <span>1–3 minute segments for the demo</span>
+          </div>
+          <div class="scope-meta-item">
+            <span class="meta-label">Delivery</span>
+            <span>Upload → analyze → insights</span>
+          </div>
+        </div>
+
+        <div class="scope-split">
+          <div class="scope-col scope-in">
+            <div class="scope-head in-head">In Scope</div>
+            <ul class="scope-list">
+              <li>Player tracking</li>
+              <li>Ball tracking</li>
+              <li>Key event detection (goals, shots, passes, corners)</li>
+              <li>Team identification</li>
+              <li>Performance metrics</li>
+              <li>Coaching insights</li>
+            </ul>
+          </div>
+          <div class="scope-col scope-out">
+            <div class="scope-head out-head">Out of Scope</div>
+            <ul class="scope-list">
+              <li>Real-time / live analysis</li>
+              <li>Multi-camera support</li>
+              <li>Biometric data</li>
+              <li>Full 90-minute match analysis</li>
+              <li>Injury risk flagging</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="assumption-bar">
+          <span class="assumption-kicker">Key Assumption</span>
+          <p>
+            <strong>Quality matters.</strong> Broadcast-quality footage provides
+            the consistent visual conditions needed for reliable detection.
+            Lower-quality video degrades accuracy significantly — this system
+            is optimized for high-quality content.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         06 — DATA
+    ─────────────────────────────────────── -->
+    <section id="data" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">06 — Data Extraction</div>
+        <h2>What can we actually<br>pull from a video?</h2>
+        <p class="section-intro">
+          Before insights, you need to understand what types of signals live
+          inside video footage and how each one maps to something useful.
+        </p>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-badge">Spatial</div>
+            <h4>Position Data</h4>
+            <p>Where every player and the ball is at any moment, as pitch coordinates.</p>
+            <div class="data-output">→ Heatmaps, territory control, defensive shape</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Temporal</div>
+            <h4>Event Sequences</h4>
+            <p>What happens in what order — passes, tackles, shots, transitions, set pieces.</p>
+            <div class="data-output">→ Match timeline, momentum, transition speed</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Identity</div>
+            <h4>Team Assignment</h4>
+            <p>Which players belong to which team, inferred from kit color and spatial grouping.</p>
+            <div class="data-output">→ Possession split, per-team stats, comparison</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Tactical</div>
+            <h4>Shape &amp; Structure</h4>
+            <p>How teams are organized — defensive line height, pressing triggers, spacing.</p>
+            <div class="data-output">→ Formation recognition, coaching recommendations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         07 — ARCHITECTURE
+    ─────────────────────────────────────── -->
+    <section id="architecture" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">07 — Architecture</div>
+        <h2>How the pipeline<br>actually works.</h2>
+        <p class="section-intro">
+          Five stages take a raw video clip and turn it into structured coaching
+          insights.
+        </p>
+
+        <!-- Pipeline diagram -->
+        <div class="pipeline-scroll">
+          <div class="pipeline">
+            <div class="pipe-node">
+              <div class="pipe-num">1</div>
+              <div class="pipe-title">Upload</div>
+              <div class="pipe-sub">Browser extracts keyframes via Canvas API</div>
+            </div>
+            <div class="pipe-arrow">›</div>
+            <div class="pipe-node">
+              <div class="pipe-num">2</div>
+              <div class="pipe-title">Frame Analysis</div>
+              <div class="pipe-sub">Claude Vision per frame, 4 concurrent</div>
+            </div>
+            <div class="pipe-arrow">›</div>
+            <div class="pipe-node">
+              <div class="pipe-num">3</div>
+              <div class="pipe-title">Calibration</div>
+              <div class="pipe-sub">Screen coords → real pitch coordinates</div>
+            </div>
+            <div class="pipe-arrow">›</div>
+            <div class="pipe-node">
+              <div class="pipe-num">4</div>
+              <div class="pipe-title">Event Review</div>
+              <div class="pipe-sub">Claude verifies flagged moments</div>
+            </div>
+            <div class="pipe-arrow">›</div>
+            <div class="pipe-node pipe-featured">
+              <div class="pipe-num">5</div>
+              <div class="pipe-title">Synthesis</div>
+              <div class="pipe-sub">Claude Opus → insights, xG, projection</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-list">
+          <div class="arch-item">
+            <span class="arch-dot"></span>
+            <div>
+              <strong>Keyframe Extraction</strong>
+              <p>The browser uses the Canvas API to pull frames from the video at regular intervals — no full video is sent to the server. Frames are extracted at 1280×720. Higher resolution matters: the ball becomes invisible at half that size.</p>
+            </div>
+          </div>
+          <div class="arch-item">
+            <span class="arch-dot"></span>
+            <div>
+              <strong>Parallel Frame Analysis</strong>
+              <p>Claude Vision (Sonnet 4.6) analyzes each frame: player positions, ball location as 0–100 pitch coordinates, team possession, and visible events. Four frames run concurrently — cutting total processing time by 75% versus doing them one at a time.</p>
+            </div>
+          </div>
+          <div class="arch-item">
+            <span class="arch-dot"></span>
+            <div>
+              <strong>Camera Calibration</strong>
+              <p>Each frame is mapped to a slice of the pitch. The system estimates which portion of the field is visible and translates screen coordinates to real pitch positions — enabling spatial analysis even as the broadcast camera pans.</p>
+            </div>
+          </div>
+          <div class="arch-item">
+            <span class="arch-dot"></span>
+            <div>
+              <strong>Event Review</strong>
+              <p>Candidate moments — potential goals, shots, corners — are pre-flagged using geometry. Claude reviews those specific windows with images to confirm or reject each. Scoreboards are read every frame and cross-referenced: a goal is confirmed the moment the number changes.</p>
+            </div>
+          </div>
+          <div class="arch-item">
+            <span class="arch-dot"></span>
+            <div>
+              <strong>Vision Synthesis</strong>
+              <p>Claude Opus (4.8) receives up to 12 key frames alongside all aggregated metrics. It produces coaching insights, an outcome projection (home win / draw / away win), per-shot Expected Goals (xG), and a 2–3 sentence narrative of the clip. The system prompt is prompt-cached so repeated analyses don't re-pay for it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         08 — ML & AI
+    ─────────────────────────────────────── -->
+    <section id="ml" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">08 — ML &amp; AI Techniques</div>
+        <h2>Choosing the right<br>tool for each job.</h2>
+        <p class="section-intro">
+          Different stages need different capabilities. The key is matching the
+          right model to the right task — and knowing what each one can't do.
+        </p>
+
+        <div class="ml-grid">
+          <div class="ml-card">
+            <div class="ml-model">Claude Vision · Sonnet 4.6</div>
+            <div class="ml-role">Per-frame detection</div>
+            <ul class="dot-list">
+              <li>Identifies players, ball, and events from a still image</li>
+              <li>Handles ambiguity — shadows, crowds, unusual camera angles</li>
+              <li>Returns structured JSON: positions, possession, events</li>
+            </ul>
+            <div class="ml-note">High accuracy on context-heavy situations. Slower than pure CV per frame.</div>
+          </div>
+          <div class="ml-card">
+            <div class="ml-model">Claude Opus · 4.8</div>
+            <div class="ml-role">Tactical synthesis</div>
+            <ul class="dot-list">
+              <li>Sees curated key frames + all numeric metrics together</li>
+              <li>Judges tactical shape, defensive line height, shot quality</li>
+              <li>Outputs coaching insights and Expected Goals estimates</li>
+            </ul>
+            <div class="ml-note">Strongest reasoning model. One call per analysis. System prompt is cached.</div>
+          </div>
+          <div class="ml-card">
+            <div class="ml-model">YOLO (optional layer)</div>
+            <div class="ml-role">Dense tracking</div>
+            <ul class="dot-list">
+              <li>Tracks players and ball at 15fps</li>
+              <li>Generates high-frequency positional data</li>
+              <li>Runs locally via a separate worker endpoint</li>
+            </ul>
+            <div class="ml-note">Very fast and cheap. But produces coordinates — not meaning. Needs Claude to interpret.</div>
+          </div>
+        </div>
+
+        <div class="hybrid-block">
+          <div class="block-label">Why a hybrid approach?</div>
+          <div class="hybrid-row">
+            <div class="hybrid-col">
+              <strong>Pure LLM</strong>
+              <p>Rich, context-aware output — but too slow and expensive at high frame rates</p>
+            </div>
+            <div class="hybrid-sep">vs</div>
+            <div class="hybrid-col">
+              <strong>Pure CV (YOLO)</strong>
+              <p>Fast and cheap — but produces coordinates, not insight</p>
+            </div>
+            <div class="hybrid-sep">→</div>
+            <div class="hybrid-col hybrid-winner">
+              <strong>Hybrid</strong>
+              <p>CV handles the volume. LLMs handle the judgment. Best of both.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="xg-block">
+          <div class="block-label">Expected Goals (xG)</div>
+          <p>
+            xG estimates the probability that a shot results in a goal — based
+            on angle, distance, and defensive pressure. In SoccerVision, xG is
+            <strong>vision-grounded</strong>: Claude Opus looks at the actual
+            shot frame and estimates chance quality from what it can see (keeper
+            position, defender proximity, body angle at contact). When visual
+            evidence is unclear, it falls back to a positional formula.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         09 — CHALLENGES
+    ─────────────────────────────────────── -->
+    <section id="challenges" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">09 — Challenges &amp; Validation</div>
+        <h2>What makes this<br>genuinely hard.</h2>
+
+        <div class="ch-grid">
+          <div class="ch-card">
+            <div class="ch-num">01</div>
+            <h4>Latency</h4>
+            <p>Each API call takes 8–15 seconds of network and model time. Running four frames concurrently already cuts total time by 75%. Prompt caching on the Opus synthesis call avoids re-sending the same system instructions on every analysis.</p>
+          </div>
+          <div class="ch-card">
+            <div class="ch-num">02</div>
+            <h4>Camera Motion</h4>
+            <p>Broadcast cameras pan constantly. A player in the left third of one frame appears in the right third of the next. Camera calibration smooths this — blending position estimates across frames and only snapping on large detected cuts.</p>
+          </div>
+          <div class="ch-card">
+            <div class="ch-num">03</div>
+            <h4>Event Ambiguity</h4>
+            <p>Not every contact is a shot. Not every raised arm is a celebration. The candidate window system pre-flags likely moments using geometry, then Claude verifies — reducing false positives without losing true events.</p>
+          </div>
+          <div class="ch-card">
+            <div class="ch-num">04</div>
+            <h4>Scoreboard Reading</h4>
+            <p>Scoreboards are read every frame, but goal synthesis only triggers when the score actually changes — cross-referenced against visual evidence of the ball crossing the line. Pre-clip context is excluded from in-clip goal detection.</p>
+          </div>
+        </div>
+
+        <div class="validation-block">
+          <div class="block-label">How We Validated the Workflow</div>
+          <p>
+            Each stage has internal checks: events are deduplicated across time
+            and position windows, conflicts between Claude's output and geometry
+            flags are surfaced explicitly, and synthesis insights are grounded
+            in key frames — not inferred from stats alone. The system tags
+            low-confidence events so they can be filtered or reviewed
+            separately.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         10 — WHAT'S NEXT
+    ─────────────────────────────────────── -->
+    <section id="next" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">10 — What This Enables</div>
+        <h2>This is the foundation.<br>Here's where it goes.</h2>
+        <p class="section-intro">
+          The demo handles short clips. With more data and infrastructure, the
+          same pipeline extends into something much more powerful.
+        </p>
+
+        <div class="future-grid">
+          <div class="future-card">
+            <div class="future-tag">Player Intelligence</div>
+            <h4>Longitudinal Tracking</h4>
+            <p>Link player data across games. Track development, flag workload changes, surface regression before it appears in the scoreline.</p>
+          </div>
+          <div class="future-card">
+            <div class="future-tag">League Scale</div>
+            <h4>League-Wide Benchmarking</h4>
+            <p>Compare pressing stats against every team in your division. Identify tactical trends across the league before opponents do.</p>
+          </div>
+          <div class="future-card">
+            <div class="future-tag">Tactical Depth</div>
+            <h4>Formation Recognition</h4>
+            <p>Detect formation shifts in real time. Flag when the opposition changes shape and surface what the team's response should be.</p>
+          </div>
+          <div class="future-card">
+            <div class="future-tag">Live Analysis</div>
+            <h4>Real-Time Streaming</h4>
+            <p>Move from upload-based analysis to live feed processing — in-game prompts for the bench, not just post-match reports.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         CLOSING
+    ─────────────────────────────────────── -->
+    <footer class="closing">
+      <div class="wrap">
+        <div class="closing-kicker">The takeaway</div>
+        <h2>The pieces existed.<br>The work was knowing<br>which ones to connect.</h2>
+        <p>
+          SoccerVision is a proof of concept — built to explore whether AI can
+          do more than track, whether it can actually understand what it sees.
+          The answer is yes. The question now is how far that goes.
+        </p>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

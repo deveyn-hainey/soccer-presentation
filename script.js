@@ -7,10 +7,9 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.16 }
+  { threshold: 0.1 }
 );
 
-document.querySelectorAll(".section-panel, .story-intro").forEach((section) => {
-  section.classList.add("reveal");
-  observer.observe(section);
+document.querySelectorAll(".reveal").forEach((el) => {
+  observer.observe(el);
 });
