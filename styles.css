@@ -1639,7 +1639,7 @@ p { color: var(--text); }
 ================================================ */
 @media (min-width: 1200px) {
   body {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .wrap,
@@ -1679,11 +1679,11 @@ p { color: var(--text); }
 
   .section-intro {
     max-width: 720px;
-    font-size: 1.12rem;
+    font-size: 1.2rem;
   }
 
   .hero-lede {
-    font-size: clamp(1.08rem, 1.45vw, 1.28rem);
+    font-size: clamp(1.16rem, 1.5vw, 1.35rem);
     max-width: 760px;
   }
 
@@ -1692,7 +1692,7 @@ p { color: var(--text); }
   }
 
   .task-card p {
-    font-size: 1.08rem;
+    font-size: 1.15rem;
   }
 
   .af-header,
@@ -1712,11 +1712,57 @@ p { color: var(--text); }
   }
 
   .af-step strong {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .af-step p {
-    font-size: 0.84rem;
+    font-size: 0.9rem;
+  }
+
+  .dot-list li,
+  .check-list li,
+  .scope-list li,
+  .card-note,
+  .need-item p,
+  .success-item,
+  .data-card p,
+  .data-output,
+  .metric-card p,
+  .arch-item p,
+  .ml-note,
+  .hybrid-col p,
+  .xg-block p,
+  .trade-card p,
+  .production-callout p,
+  .ch-card p,
+  .validation-block p,
+  .eval-card p,
+  .future-card p,
+  .design-shot figcaption,
+  .demo-hero-shot figcaption,
+  .dbox-sub,
+  .dbox-quad span,
+  .out-item span {
+    font-size: 1rem;
+  }
+
+  .coverage-card p,
+  .block-node p {
+    font-size: 0.95rem;
+  }
+
+  .coverage-card strong,
+  .block-node strong,
+  .metric-card strong,
+  .eval-card strong,
+  .trade-card span,
+  .future-card h4,
+  .arch-item strong,
+  .ml-role,
+  .pipe-title,
+  .dbox-title,
+  .out-item strong {
+    font-size: 1.05rem;
   }
 }
 
