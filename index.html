@@ -11,15 +11,17 @@
     <header class="topbar">
       <span class="brand">SoccerVision</span>
       <nav class="nav-links">
+        <a href="#coverage">Coverage</a>
         <a href="#users">Users</a>
         <a href="#problem">Problem</a>
-        <a href="#landscape">Landscape</a>
         <a href="#scope">Scope</a>
-        <a href="#demo">Demo</a>
+        <a href="#building">Blocks</a>
         <a href="#data">Data</a>
         <a href="#architecture">Architecture</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#ml">ML &amp; AI</a>
+        <a href="#eval">Eval</a>
+        <a href="#demo">Demo</a>
         <a href="#next">What's Next</a>
       </nav>
     </header>
@@ -34,19 +36,27 @@
         <div class="hero-wrap">
         <div class="hero-left">
           <p class="hero-lede">
-            Think about everything available to us right now — AI vision APIs, language
-            models, cloud infrastructure, open-source CV models. It's like a box of
-            Legos. Powerful pieces, already built. The job isn't to reinvent them. It's
-            to know which ones exist, understand how they connect, and figure out what
-            problem you can solve by putting them together the right way.
+            This was a fast task, so I treated it like a realistic early-stage
+            product investigation: understand the users, research what is already
+            possible, assemble proven building blocks, build a working proof of
+            concept, then be honest about what I would validate next with more time.
           </p>
           <div class="task-card">
             <span class="task-label">The Task</span>
             <p>
               Explore the potential of using machine learning and AI to analyze
-              videos of soccer matches and extract valuable insights. I wanted to
-              tackle this problem by assembling the right blocks — not building from
-              scratch.
+              videos of soccer matches, extract player/ball/event data, identify
+              challenges, compare techniques, and explain what insights could be
+              useful in practice.
+            </p>
+          </div>
+          <div class="task-card task-card-white">
+            <span class="task-label">My Constraint</span>
+            <p>
+              I did not try to train every model from scratch in a few days. I used
+              available building blocks from the internet, open-source CV models,
+              APIs, and public soccer datasets/docs, then connected them into a
+              demo that shows the product direction.
             </p>
           </div>
         </div>
@@ -95,11 +105,58 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         02 — USERS
+         02 — PROMPT COVERAGE
     ─────────────────────────────────────── -->
-    <section id="users" class="s-gray reveal">
+    <section id="coverage" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">02 — Who We're Building For</div>
+        <div class="section-num">02 — Task Coverage</div>
+        <h2>Making the interview prompt explicit.</h2>
+        <p class="section-intro">
+          I structured the work so each part of the prompt maps to either a
+          research decision, a working demo feature, or a next-step validation plan.
+        </p>
+
+        <div class="coverage-grid">
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>What data can be extracted?</strong>
+            <p>Players, ball, teams, events, pitch position, scoreboard, possession, shot quality, heatmaps.</p>
+          </div>
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>Which ML/AI techniques apply?</strong>
+            <p>Vision-language models, YOLO detection, tracking, team clustering, pitch calibration, LLM synthesis.</p>
+          </div>
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>What makes soccer video hard?</strong>
+            <p>Small ball, camera pans, occlusion, replays, team-color swaps, event ambiguity, latency and cost.</p>
+          </div>
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>What insights become possible?</strong>
+            <p>Key moments, xG, possession flow, tactical shape, player density, coaching recommendations.</p>
+          </div>
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>How would I research it?</strong>
+            <p>Start from users and workflows, survey existing tools, inspect available data, prototype, then benchmark.</p>
+          </div>
+          <div class="coverage-card">
+            <span>Prompt asks</span>
+            <strong>How would I evaluate it?</strong>
+            <p>With more time: labeled clips, detector recall, tracking stability, event timing accuracy, and coach usefulness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         03 — USERS
+    ─────────────────────────────────────── -->
+    <section id="users" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">03 — Who We're Building For</div>
         <h2>Start with the people, not the technology.</h2>
         <p class="section-intro">
           Before writing a single line of code, the first question was: who
@@ -159,11 +216,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         03 — PROBLEM
+         04 — PROBLEM
     ─────────────────────────────────────── -->
     <section id="problem" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">03 — The Problem</div>
+        <div class="section-num">04 — The Problem</div>
         <h2>Coaches have strong instincts. Data is fragmented.</h2>
 
         <div class="two-col">
@@ -203,11 +260,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         04 — LANDSCAPE
+         05 — LANDSCAPE
     ─────────────────────────────────────── -->
     <section id="landscape" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">04 — The Landscape</div>
+        <div class="section-num">05 — The Landscape</div>
         <h2>What already exists, and where it falls short.</h2>
         <p class="section-intro">
           Understanding the gap between what's possible and what's being used
@@ -260,11 +317,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         05 — SCOPE
+         06 — SCOPE
     ─────────────────────────────────────── -->
     <section id="scope" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">05 — Scope</div>
+        <div class="section-num">06 — Scope</div>
         <h2>Know what you're building. And what you're not.</h2>
 
         <div class="scope-meta">
@@ -286,12 +343,12 @@
           <div class="scope-col scope-in">
             <div class="scope-head in-head">In Scope</div>
             <ul class="scope-list">
-              <li>Player tracking</li>
-              <li>Ball tracking</li>
+              <li>Player and ball position extraction from sampled frames</li>
+              <li>Optional dense tracking through the local YOLO worker</li>
               <li>Key event detection (goals, shots, passes, corners)</li>
               <li>Team identification</li>
-              <li>Performance metrics</li>
-              <li>Coaching insights</li>
+              <li>Performance metrics and confidence flags</li>
+              <li>Coaching insights generated from structured match data</li>
             </ul>
           </div>
           <div class="scope-col scope-out">
@@ -319,51 +376,61 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         06 — DATA
+         07 — BUILDING BLOCKS
     ─────────────────────────────────────── -->
-    <!-- ──────────────────────────────────────
-         06 — DEMO
-    ─────────────────────────────────────── -->
-    <section id="demo" class="s-white reveal">
+    <section id="building" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">06 — The Demo</div>
-        <h2>Here's what it actually produces.</h2>
+        <div class="section-num">07 — Research Inputs &amp; Building Blocks</div>
+        <h2>I treated this like assembly, not reinvention.</h2>
         <p class="section-intro">
-          Upload a 1–3 minute broadcast clip. The system runs the full pipeline
-          and returns structured coaching output. Here are the three moments in
-          that flow worth seeing.
+          With a short task window, the responsible approach was to use credible
+          existing pieces, learn their limits quickly, and connect them into a
+          workflow that proves the direction.
         </p>
 
-        <div class="demo-grid">
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 1</div>
-            <div class="slot-title">Upload &amp; Extract</div>
-            <div class="slot-sub">Drop a clip. Frames extracted instantly in the browser — no upload wait.</div>
+        <div class="blocks-flow">
+          <div class="block-node">
+            <span>Research</span>
+            <strong>Soccer analytics workflow</strong>
+            <p>What coaches and analysts need: fast moments, tactical context, and player-facing explanations.</p>
           </div>
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 2</div>
-            <div class="slot-title">Live Analysis</div>
-            <div class="slot-sub">Watch the pipeline run: frame batches processing, events flagging, pitch map building.</div>
+          <div class="block-arrow">→</div>
+          <div class="block-node">
+            <span>Data</span>
+            <strong>Public footage + known datasets</strong>
+            <p>Broadcast clips and internet examples for the POC; SoccerNet-style tracking and calibration data as the better benchmark path.</p>
           </div>
-          <div class="screenshot-slot">
-            <div class="slot-label">Step 3</div>
-            <div class="slot-title">Coaching Output</div>
-            <div class="slot-sub">Insights, xG, outcome projection, and a plain-English clip summary — ready to act on.</div>
+          <div class="block-arrow">→</div>
+          <div class="block-node">
+            <span>Models</span>
+            <strong>Claude + YOLO worker path</strong>
+            <p>Claude for frame interpretation and summary; optional YOLO worker for local detection, ball/player/referee classes, and dense tracking.</p>
+          </div>
+          <div class="block-arrow">→</div>
+          <div class="block-node">
+            <span>Product</span>
+            <strong>Analysis dashboard</strong>
+            <p>Turn structured JSON into field overlays, timelines, heatmaps, stats, and coaching recommendations.</p>
           </div>
         </div>
 
-        <div class="demo-note">
-          <strong>Live demo here.</strong> The screenshot slots above are placeholders —
-          replace with actual screenshots from the app, or run the live demo at this point
-          in the presentation and come back to the architecture section to explain how it works.
+        <div class="truth-row">
+          <div class="truth-card">
+            <div class="block-label">What I built now</div>
+            <p>A working Next.js proof of concept that samples frames, calls vision routes, reviews events, summarizes metrics, and renders a coaching dashboard.</p>
+          </div>
+          <div class="truth-card">
+            <div class="block-label">What I researched for next</div>
+            <p>A more production-grade CV layer: soccer-specific YOLO, ByteTrack/BoT-SORT, keypoint homography, labeled benchmarks, and hosted GPU inference.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ──────────────────────────────────────
-         07 — DATA (now 08 after demo insertion)
+         08 — DATA
     ─────────────────────────────────────── -->
-    <section id="data" class="s-gray reveal">
+    <section id="data" class="s-white reveal">
       <div class="wrap">
         <div class="section-num">08 — Data Extraction</div>
         <h2>What can we actually pull from a video?</h2>
@@ -376,25 +443,25 @@
           <div class="data-card">
             <div class="data-badge">Spatial</div>
             <h4>Position Data</h4>
-            <p>Where every player and the ball is at any moment, as pitch coordinates.</p>
-            <div class="data-output">→ Heatmaps, territory control, defensive shape</div>
+            <p>Where visible players and the ball are in the frame, with true pitch coordinates when homography succeeds.</p>
+            <div class="data-output">→ Heatmaps, territory control, tactical board</div>
           </div>
           <div class="data-card">
             <div class="data-badge">Temporal</div>
             <h4>Event Sequences</h4>
             <p>What happens in what order — passes, tackles, shots, transitions, set pieces.</p>
-            <div class="data-output">→ Match timeline, momentum, transition speed</div>
+            <div class="data-output">→ Match timeline, key moments, transition patterns</div>
           </div>
           <div class="data-card">
             <div class="data-badge">Identity</div>
             <h4>Team Assignment</h4>
-            <p>Which players belong to which team, inferred from kit color and spatial grouping.</p>
+            <p>Which players belong to which team, inferred from model output, kit context, or worker-side jersey clustering.</p>
             <div class="data-output">→ Possession split, per-team stats, comparison</div>
           </div>
           <div class="data-card">
             <div class="data-badge">Tactical</div>
             <h4>Shape &amp; Structure</h4>
-            <p>How teams are organized — defensive line height, pressing triggers, spacing.</p>
+            <p>How teams appear organized from sampled frames — line height, spacing, pressure, and shot context.</p>
             <div class="data-output">→ Formation recognition, coaching recommendations</div>
           </div>
         </div>
@@ -409,8 +476,9 @@
         <div class="section-num">09 — Architecture</div>
         <h2>How the pipeline actually works.</h2>
         <p class="section-intro">
-          Five stages take a raw video clip and turn it into structured coaching
-          insights.
+          The current app is a hybrid proof of concept: browser frame extraction,
+          vision routes for structure, optional local YOLO preprocessing, and a
+          final synthesis pass for coaching language.
         </p>
 
         <!-- Pipeline diagram -->
@@ -425,13 +493,13 @@
             <div class="pipe-node">
               <div class="pipe-num">2</div>
               <div class="pipe-title">Frame Analysis</div>
-              <div class="pipe-sub">Claude Vision per frame, 4 concurrent</div>
+              <div class="pipe-sub">Claude fallback or optional YOLO worker</div>
             </div>
             <div class="pipe-arrow">›</div>
             <div class="pipe-node">
               <div class="pipe-num">3</div>
               <div class="pipe-title">Calibration</div>
-              <div class="pipe-sub">Screen coords → real pitch coordinates</div>
+              <div class="pipe-sub">Pitch window fallback or keypoint homography</div>
             </div>
             <div class="pipe-arrow">›</div>
             <div class="pipe-node">
@@ -443,7 +511,7 @@
             <div class="pipe-node pipe-featured">
               <div class="pipe-num">5</div>
               <div class="pipe-title">Synthesis</div>
-              <div class="pipe-sub">Claude Opus → insights, xG, projection</div>
+              <div class="pipe-sub">Summary model → insights, xG, projection</div>
             </div>
           </div>
         </div>
@@ -460,28 +528,28 @@
             <span class="arch-dot"></span>
             <div>
               <strong>Parallel Frame Analysis</strong>
-              <p>Claude Vision (Sonnet 4.6) analyzes each frame: player positions, ball location as 0–100 pitch coordinates, team possession, and visible events. Four frames run concurrently — cutting total processing time by 75% versus doing them one at a time.</p>
+              <p>The app can use Claude Vision as a fallback to analyze sampled frames: player positions, ball location as 0–100 image coordinates, possession, and visible events. The client runs bounded concurrency so a short clip can be processed without waiting on every frame serially.</p>
             </div>
           </div>
           <div class="arch-item">
             <span class="arch-dot"></span>
             <div>
               <strong>Camera Calibration</strong>
-              <p>Each frame is mapped to a slice of the pitch. The system estimates which portion of the field is visible and translates screen coordinates to real pitch positions — enabling spatial analysis even as the broadcast camera pans.</p>
+              <p>The app estimates which slice of the pitch is visible for sampled frames. The optional YOLO worker can go further: detect field keypoints and use homography to produce true pitch positions when calibration succeeds.</p>
             </div>
           </div>
           <div class="arch-item">
             <span class="arch-dot"></span>
             <div>
               <strong>Event Review</strong>
-              <p>Candidate moments — potential goals, shots, corners — are pre-flagged using geometry. Claude reviews those specific windows with images to confirm or reject each. Scoreboards are read every frame and cross-referenced: a goal is confirmed the moment the number changes.</p>
+              <p>Candidate moments — potential goals, shots, corners — are pre-flagged using geometry. Claude reviews those specific windows with images to confirm or reject each. The event route also asks for scoreboard reads per supplied frame, then the app synthesizes clip-scoped goals only when the observed score increases after the baseline.</p>
             </div>
           </div>
           <div class="arch-item">
             <span class="arch-dot"></span>
             <div>
               <strong>Vision Synthesis</strong>
-              <p>Claude Opus (4.8) receives up to 12 key frames alongside all aggregated metrics. It produces coaching insights, an outcome projection (home win / draw / away win), per-shot Expected Goals (xG), and a 2–3 sentence narrative of the clip. The system prompt is prompt-cached so repeated analyses don't re-pay for it.</p>
+              <p>The summary route sends selected key frames and aggregated metrics to the configured summary model. It produces coaching insights, an outcome projection, per-shot Expected Goals (xG), and a 2–3 sentence narrative of the clip, with deterministic fallbacks when the model call fails.</p>
             </div>
           </div>
         </div>
@@ -521,7 +589,7 @@
             <div class="dh-arrow">→</div>
             <div class="dbox">
               <div class="dbox-title">4 Concurrent Workers</div>
-              <div class="dbox-sub">Batches frames in groups of 4 · client-side merge + scoreboard synthesis after all batches</div>
+              <div class="dbox-sub">Runs bounded concurrency for frame analysis · event review uses 4-frame batches · client merges results</div>
             </div>
           </div>
         </div>
@@ -535,13 +603,13 @@
             <div class="dbox dbox-model">
               <div class="model-chip chip-sonnet">Claude Sonnet 4.6</div>
               <div class="dbox-file">api/analyze/frame</div>
-              <div class="dbox-sub">Scans all players (both teams) · Ball position 0–100 coords · Possession · Events · Scoreboard value per frame</div>
+              <div class="dbox-sub">Fallback frame analysis · Players from both teams · Ball position in 0–100 image coordinates · Possession · Visible events</div>
             </div>
             <div class="dh-plus">+</div>
             <div class="dbox">
               <div class="dbox-file">api/analyze/pitch</div>
               <div class="dbox-title">Camera Calibration</div>
-              <div class="dbox-sub">Estimates which pitch slice is visible · 40/60 blend smoothing between frames · Snaps on delta &gt; 10</div>
+              <div class="dbox-sub">Estimates visible pitch window as a fallback · smooths between sampled frames · worker homography can provide true pitch positions</div>
             </div>
           </div>
         </div>
@@ -549,9 +617,9 @@
         <div class="dv-arrow-row">
           <div class="dv-arrow">↓ FrameData[ ] + pitchWindow[ ] merged client-side</div>
           <div class="dbox-optional">
-            <div class="opt-chip">Optional</div>
-            <div class="dbox-title">YOLO Worker</div>
-            <div class="dbox-sub">Local GPU · dense tracking at 15 fps · ByteTrack-style player ID persistence · pipes into event verification</div>
+              <div class="opt-chip">Optional</div>
+              <div class="dbox-title">YOLO Worker</div>
+              <div class="dbox-sub">Runs locally or on a GPU host · soccer-specific detector path · dense frames at 15 fps · pipes metadata into event verification</div>
           </div>
         </div>
 
@@ -563,9 +631,9 @@
               <div class="model-chip chip-sonnet">Claude Sonnet 4.6</div>
               <div class="dbox-file">api/analyze/events</div>
               <div class="dbox-quad">
-                <span>Geometry pass pre-flags ~40 candidate moments: goal-line proximity, shot zone entry, corner triggers, direction reversals, celebration clusters, camera cuts</span>
+                <span>Geometry pass pre-flags up to 40 candidate moments: goal-line proximity, shot zone entry, corner triggers, direction reversals, celebration clusters, camera cuts</span>
                 <span>Claude reviews each candidate window with the actual frame image + any YOLO metadata to confirm or reject</span>
-                <span>Scoreboard read independently every frame — goal synthesis fires when the score number increases</span>
+                <span>Event review reports a scoreboard value or null for each supplied frame; goal synthesis fires only when the score increases after the clip baseline</span>
                 <span>Fallback events tagged <code>low_confidence</code> when Claude skips a window · Truncated JSON auto-repaired</span>
               </div>
             </div>
@@ -586,7 +654,7 @@
             <div class="dbox dbox-model dbox-opus">
               <div class="model-chip chip-opus">Claude Opus 4.8</div>
               <div class="dbox-file">lib/visionSynthesis.ts</div>
-              <div class="dbox-sub">Single call per analysis · System prompt cached (cache_control: ephemeral) · Key frames + all metrics → insights, outcome projection, per-shot xG, 2–3 sentence narrative</div>
+              <div class="dbox-sub">Single vision-grounded synthesis call per analysis · Key frames + all metrics → insights, outcome projection, per-shot xG, 2–3 sentence narrative</div>
             </div>
           </div>
         </div>
@@ -634,13 +702,13 @@
         <div class="ml-grid">
           <div class="ml-card">
             <div class="ml-model">Claude Vision · Sonnet 4.6</div>
-            <div class="ml-role">Per-frame detection</div>
+            <div class="ml-role">POC frame interpretation / fallback</div>
             <ul class="dot-list">
-              <li>Identifies players, ball, and events from a still image</li>
-              <li>Handles ambiguity — shadows, crowds, unusual camera angles</li>
-              <li>Returns structured JSON: positions, possession, events</li>
+              <li>Reads sampled frames and returns structured JSON</li>
+              <li>Useful for context-heavy cases and quick prototyping</li>
+              <li>Can identify players, ball, possession, and visible events</li>
             </ul>
-            <div class="ml-note">High accuracy on context-heavy situations. Slower than pure CV per frame.</div>
+            <div class="ml-note">Strong for interpretation, but not ideal for dense frame-by-frame tracking, stable IDs, or low-cost full-match processing.</div>
           </div>
           <div class="ml-card">
             <div class="ml-model">Claude Opus · 4.8</div>
@@ -650,17 +718,17 @@
               <li>Judges tactical shape, defensive line height, shot quality</li>
               <li>Outputs coaching insights and Expected Goals estimates</li>
             </ul>
-            <div class="ml-note">Strongest reasoning model. One call per analysis. System prompt is cached.</div>
+            <div class="ml-note">One synthesis call per analysis in the current repo. Best used after deterministic stats and key frames are already prepared.</div>
           </div>
           <div class="ml-card">
             <div class="ml-model">YOLO (optional layer)</div>
-            <div class="ml-role">Dense tracking</div>
+            <div class="ml-role">Production path for dense CV</div>
             <ul class="dot-list">
-              <li>Tracks players and ball at 15fps</li>
-              <li>Generates high-frequency positional data</li>
-              <li>Runs locally via a separate worker endpoint</li>
+              <li>Detects players, ball, and referees with the right weights</li>
+              <li>Can generate dense frames at 15fps through the worker</li>
+              <li>Can run locally now or on a hosted GPU later</li>
             </ul>
-            <div class="ml-note">Very fast and cheap. But produces coordinates — not meaning. Needs Claude to interpret.</div>
+            <div class="ml-note">Fast and cheaper at scale, but quality depends on soccer-specific weights, tracking stability, and calibration.</div>
           </div>
         </div>
 
@@ -687,12 +755,11 @@
         <div class="xg-block">
           <div class="block-label">Expected Goals (xG)</div>
           <p>
-            xG estimates the probability that a shot results in a goal — based
-            on angle, distance, and defensive pressure. In SoccerVision, xG is
-            <strong>vision-grounded</strong>: Claude Opus looks at the actual
-            shot frame and estimates chance quality from what it can see (keeper
-            position, defender proximity, body angle at contact). When visual
-            evidence is unclear, it falls back to a positional formula.
+            xG estimates the probability that a shot results in a goal. In the
+            current repo, the synthesis model can assign per-shot xG from key
+            frames and visible context; when that is unavailable, the app falls
+            back to a positional formula. With more time, this should be calibrated
+            against a real labeled shot dataset.
           </p>
         </div>
       </div>
@@ -725,12 +792,12 @@
           <div class="ch-card">
             <div class="ch-num">04</div>
             <h4>Scoreboard Reading</h4>
-            <p>Scoreboards are read every frame, but goal synthesis only triggers when the score actually changes — cross-referenced against visual evidence of the ball crossing the line. Pre-clip context is excluded from in-clip goal detection.</p>
+            <p>The event route reports scoreboard values when legible, but goal synthesis only triggers when the score increases after the clip baseline. This avoids counting goals that happened before the uploaded clip started.</p>
           </div>
         </div>
 
         <div class="validation-block">
-          <div class="block-label">How We Validated the Workflow</div>
+          <div class="block-label">What the POC validates</div>
           <p>
             Each stage has internal checks: events are deduplicated across time
             and position windows, conflicts between Claude's output and geometry
@@ -744,37 +811,135 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         13 — WHAT'S NEXT
+         13 — EVALUATION PLAN
+    ─────────────────────────────────────── -->
+    <section id="eval" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">13 — Evaluation Plan</div>
+        <h2>What I would evaluate with more time.</h2>
+        <p class="section-intro">
+          Because this was a fast task, I focused on proving the workflow. The
+          next step would be a proper benchmark that measures whether each signal
+          is accurate enough for coaches to trust.
+        </p>
+
+        <div class="eval-grid">
+          <div class="eval-card">
+            <span>Detection</span>
+            <strong>Can we find the right objects?</strong>
+            <p>Measure player, ball, goalkeeper, and referee precision/recall across camera angles, jersey colors, lighting, close-ups, and wide tactical shots.</p>
+          </div>
+          <div class="eval-card">
+            <span>Tracking</span>
+            <strong>Do identities stay stable?</strong>
+            <p>Measure ID switches, track fragmentation, missed ball frames, and how well interpolation handles short ball-detection gaps.</p>
+          </div>
+          <div class="eval-card">
+            <span>Calibration</span>
+            <strong>Are positions meaningful?</strong>
+            <p>Compare image-space locations against true pitch coordinates using keypoint homography and labeled pitch landmarks.</p>
+          </div>
+          <div class="eval-card">
+            <span>Events</span>
+            <strong>Are key moments timed correctly?</strong>
+            <p>Benchmark passes, shots, saves, goals, corners, fouls, and scoreboard changes against hand-labeled clips.</p>
+          </div>
+          <div class="eval-card">
+            <span>Insights</span>
+            <strong>Would a coach use this?</strong>
+            <p>Have analysts rate whether the recommendations are specific, evidence-backed, and useful for the next training session.</p>
+          </div>
+          <div class="eval-card">
+            <span>Operations</span>
+            <strong>Can it run at the right cost?</strong>
+            <p>Measure processing time, API cost, GPU cost, failure rate, and whether the pipeline is fast enough for halftime or post-match review.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         14 — DEMO
+    ─────────────────────────────────────── -->
+    <section id="demo" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">14 — The Demo</div>
+        <h2>Now the pipeline is easier to understand.</h2>
+        <p class="section-intro">
+          After walking through the research, data, techniques, and limitations,
+          the demo shows the actual proof of concept: upload or demo mode,
+          analysis progress, and the coaching dashboard output.
+        </p>
+
+        <div class="demo-grid">
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 1</div>
+            <div class="slot-title">Upload or Demo Mode</div>
+            <div class="slot-sub">The analysis app accepts a short clip or loads the precomputed demo match when no API key is needed.</div>
+          </div>
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 2</div>
+            <div class="slot-title">Pipeline Run</div>
+            <div class="slot-sub">Frames are extracted, event candidates are reviewed, and match metrics are merged into structured JSON.</div>
+          </div>
+          <div class="screenshot-slot">
+            <div class="slot-label">Step 3</div>
+            <div class="slot-title">Coaching Dashboard</div>
+            <div class="slot-sub">Field view, timeline, heatmap, team comparison, xG, outcome projection, and prioritized insights.</div>
+          </div>
+        </div>
+
+        <div class="demo-note">
+          <strong>Presentation move:</strong> run the live `analysis` dashboard
+          here, or embed a short Loom/video recording of the same flow. This keeps
+          the visual proof after the audience understands what the system is doing.
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         15 — WHAT'S NEXT
     ─────────────────────────────────────── -->
     <section id="next" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">13 — What This Enables</div>
-        <h2>This is the foundation. Here's where it goes.</h2>
+        <div class="section-num">15 — With More Time</div>
+        <h2>This is the foundation. Here's where I would take it.</h2>
         <p class="section-intro">
-          The demo handles short clips. With more data and infrastructure, the
-          same pipeline extends into something much more powerful.
+          The demo handles short clips and proves the workflow. With more time,
+          better data, and hosted infrastructure, I would move from proof of
+          concept to a measurable soccer analytics pipeline.
         </p>
 
         <div class="future-grid">
           <div class="future-card">
-            <div class="future-tag">Player Intelligence</div>
-            <h4>Longitudinal Tracking</h4>
-            <p>Link player data across games. Track development, flag workload changes, surface regression before it appears in the scoreline.</p>
+            <div class="future-tag">Better Data</div>
+            <h4>Labeled soccer benchmark</h4>
+            <p>Create or obtain labeled clips for players, ball, referees, pitch landmarks, shots, passes, and goals. Use this to measure real accuracy instead of relying on visual inspection.</p>
           </div>
           <div class="future-card">
-            <div class="future-tag">League Scale</div>
-            <h4>League-Wide Benchmarking</h4>
-            <p>Compare pressing stats against every team in your division. Identify tactical trends across the league before opponents do.</p>
+            <div class="future-tag">Better Model</div>
+            <h4>Fine-tuned detector + tracker</h4>
+            <p>Train or fine-tune a soccer-specific YOLO model, add stronger tracking, and evaluate ID stability across camera cuts and occlusions.</p>
           </div>
           <div class="future-card">
-            <div class="future-tag">Tactical Depth</div>
-            <h4>Formation Recognition</h4>
-            <p>Detect formation shifts in real time. Flag when the opposition changes shape and surface what the team's response should be.</p>
+            <div class="future-tag">Better Geometry</div>
+            <h4>Pitch homography everywhere</h4>
+            <p>Use field keypoints and calibration data so heatmaps, distance, line height, and tactical shape are based on real pitch coordinates.</p>
           </div>
           <div class="future-card">
-            <div class="future-tag">Live Analysis</div>
-            <h4>Real-Time Streaming</h4>
-            <p>Move from upload-based analysis to live feed processing — in-game prompts for the bench, not just post-match reports.</p>
+            <div class="future-tag">Infrastructure</div>
+            <h4>Hosted worker vs local worker</h4>
+            <p>Keep local inference for demos and low cost, but host the YOLO/homography worker on a GPU service when teams need faster turnaround and shared access.</p>
+          </div>
+          <div class="future-card">
+            <div class="future-tag">Product</div>
+            <h4>Coach-in-the-loop review</h4>
+            <p>Let analysts approve or correct events, then feed those corrections back into the evaluation set and future model tuning.</p>
+          </div>
+          <div class="future-card">
+            <div class="future-tag">Scale</div>
+            <h4>From clips to match library</h4>
+            <p>Extend from 1–3 minute clips to full-match and multi-match analysis: player development, opponent tendencies, and league-wide benchmarking.</p>
           </div>
         </div>
       </div>
