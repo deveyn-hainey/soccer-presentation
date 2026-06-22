@@ -493,7 +493,7 @@
           <div class="metric-card">
             <span>Passes</span>
             <strong>Possession-chain counter on dense frames</strong>
-            <p>When the YOLO worker is running, passes are tracked via <code>countPossessionPasses()</code> on dense frames — the ball moving to a teammate while possession stays with the same team. Claude-reviewed pass events are the fallback when the worker isn't configured.</p>
+            <p>When the YOLO worker is running, passes are tracked via <code>countPossessionPasses()</code> on dense frames: the ball moving to a teammate while possession stays with the same team. Claude-reviewed pass events are the fallback when the worker isn't configured.</p>
           </div>
           <div class="metric-card">
             <span>Ball Retention</span>
@@ -925,7 +925,7 @@
           <div class="ch-card">
             <div class="ch-num">01</div>
             <h4>Latency</h4>
-            <p>API calls add meaningful processing time per frame. Running four frames concurrently keeps total analysis time reasonable — processing every frame serially would make the workflow impractical. Prompt caching on the Opus synthesis call avoids re-sending the same system instructions on every analysis.</p>
+            <p>API calls add meaningful processing time per frame. Running four frames concurrently keeps total analysis time reasonable; processing every frame serially would make the workflow impractical. Prompt caching on the Opus synthesis call avoids re-sending the same system instructions on every analysis.</p>
           </div>
           <div class="ch-card">
             <div class="ch-num">02</div>

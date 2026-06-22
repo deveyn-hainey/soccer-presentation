@@ -172,7 +172,7 @@ Say:
 >
 > `/api/analyze/frame` is the Claude fallback frame route. `/api/analyze/pitch` estimates the visible pitch window. `/api/analyze/events` reviews candidate moments, reads scoreboard values when visible, and handles low-confidence fallbacks.
 >
-> After event review, the client selects up to 12 key frames — prioritizing goal, shot, save, and set-piece frames, then filling remaining slots with evenly spaced coverage frames for tactical context. These are sent to `/api/analyze/summarize`, which deduplicates events, builds team stats, runs the single Opus 4.8 vision synthesis pass, and produces the final `MatchAnalysis` JSON.
+> After event review, the client selects up to 12 key frames, prioritizing goal, shot, save, and set-piece frames, then filling remaining slots with evenly spaced coverage frames for tactical context. These are sent to `/api/analyze/summarize`, which deduplicates events, builds team stats, runs the single Opus 4.8 vision synthesis pass, and produces the final `MatchAnalysis` JSON.
 >
 > The optional YOLO worker can produce dense frame data and should become the primary production extraction layer.
 
@@ -195,11 +195,41 @@ Say:
 > So the best architecture is hybrid: CV handles volume; LLMs handle judgment and explanation.
 
 Transition:
-> I expect that architecture choice to be questioned, so I made the tradeoffs explicit.
+> Once the model choices were clear, I used the interface to show what those choices produce for a coach.
 
 ---
 
-### 13. Architecture Tradeoffs - 2 min
+### 13. Product & Design Iteration - 1.5 min
+
+**Core point:** The interface moved from dashboard to coach-ready report.
+
+Say:
+> The first usable version was a dashboard: field, timeline, stats, heatmap, and comparison panels. That proved the data could be rendered.
+>
+> Then I moved toward a more coach-ready report: summary first, confidence visible, key metrics up front, and recommendations tied to evidence.
+>
+> The design iteration reflects the product lesson: raw analytics are useful, but coaches need a story they can act on.
+
+Transition:
+> That brings us to the demo output.
+
+---
+
+### 14. Demo Slide - 1 min
+
+**Core point:** The proof of concept produces a coaching report.
+
+Say:
+> This is the report direction. The clip becomes score context, a plain-English summary, an outcome projection, metric cards, confidence indicators, and coach-facing insights.
+>
+> The goal is not to replace an analyst. It is to reduce the time between watching a clip and knowing what is worth reviewing.
+
+Transition:
+> After showing the product direction, I want to make the architecture tradeoffs explicit.
+
+---
+
+### 15. Architecture Tradeoffs - 2 min
 
 **Core point:** Be ready for "why not X?"
 
@@ -219,7 +249,7 @@ Transition:
 
 ---
 
-### 14. Challenges & Validation - 2 min
+### 16. Challenges & Validation - 2 min
 
 **Core point:** Soccer video is hard because of broadcast conditions and ambiguous events.
 
@@ -235,7 +265,7 @@ Transition:
 
 ---
 
-### 15. Evaluation Plan - 2 min
+### 17. Evaluation Plan - 2 min
 
 **Core point:** Evaluation was planned honestly as the next step.
 
@@ -247,37 +277,7 @@ Say:
 > I would also evaluate the product: would coaches actually use the recommendations? And operationally: how long does it take, what does it cost, and does it fail gracefully?
 
 Transition:
-> I also iterated the product surface as the problem got clearer.
-
----
-
-### 16. Product & Design Iteration - 1.5 min
-
-**Core point:** The interface moved from dashboard to coach-ready report.
-
-Say:
-> The first usable version was a dashboard: field, timeline, stats, heatmap, and comparison panels. That proved the data could be rendered.
->
-> Then I moved toward a more coach-ready report: summary first, confidence visible, key metrics up front, and recommendations tied to evidence.
->
-> The design iteration reflects the product lesson: raw analytics are useful, but coaches need a story they can act on.
-
-Transition:
-> That brings us to the demo output.
-
----
-
-### 17. Demo Slide - 1 min
-
-**Core point:** The proof of concept produces a coaching report.
-
-Say:
-> This is the report direction. The clip becomes score context, a plain-English summary, an outcome projection, metric cards, confidence indicators, and coach-facing insights.
->
-> The goal is not to replace an analyst. It is to reduce the time between watching a clip and knowing what is worth reviewing.
-
-Transition:
-> After the demo, I’ll close with where I would take it next.
+> After that validation plan, I’ll close with where I would take the system next.
 
 ---
 
@@ -427,4 +427,3 @@ Say:
 ### If they ask: "What is the biggest risk?"
 
 > Overstating confidence. Soccer video is noisy, so the system must expose confidence, flag low-quality metrics, and keep a coach or analyst in the loop.
-
