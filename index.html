@@ -21,10 +21,10 @@
         <a href="#architecture">Architecture</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#ml">ML &amp; AI</a>
-        <a href="#tradeoffs">Tradeoffs</a>
-        <a href="#eval">Eval</a>
         <a href="#design">Design</a>
         <a href="#demo">Demo</a>
+        <a href="#tradeoffs">Tradeoffs</a>
+        <a href="#eval">Eval</a>
         <a href="#next">What's Next</a>
       </nav>
     </header>
@@ -812,11 +812,74 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         13 - ARCHITECTURE TRADEOFFS
+         13 - DESIGN ITERATION
+    ─────────────────────────────────────── -->
+    <section id="design" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">13 - Product &amp; Design Iteration</div>
+        <h2>The interface changed as the problem got clearer.</h2>
+        <p class="section-intro">
+          I started with a dashboard that proved the data surfaces, then moved
+          toward a more coach-ready report that explains confidence, metric
+          sources, and the story of the clip.
+        </p>
+
+        <div class="design-grid">
+          <figure class="design-shot">
+            <img src="assets/dashboard-light.png" alt="Earlier match analysis dashboard with field, timeline, stats, and comparison panels">
+            <figcaption>
+              <strong>First usable dashboard</strong>
+              Field view, event timeline, action stats, heatmap, and team comparison made the extracted data visible.
+            </figcaption>
+          </figure>
+          <figure class="design-shot design-shot-large">
+            <img src="assets/report-summary.png" alt="Current SoccerVision report summary with score, match summary, outcome model, and metric cards">
+            <figcaption>
+              <strong>Current report direction</strong>
+              The darker green report puts clip summary, confidence, score, xG, possession, retention, distance, and key events up front.
+            </figcaption>
+          </figure>
+          <figure class="design-shot">
+            <img src="assets/metric-detail.png" alt="Metric detail dashboard showing team comparison, finishing quality, cumulative xG, and spatial occupancy">
+            <figcaption>
+              <strong>Metric depth</strong>
+              Later iterations added finishing quality, cumulative xG, tactical occupancy, and clearer metric comparisons.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         14 - DEMO
+    ─────────────────────────────────────── -->
+    <section id="demo" class="s-white reveal">
+      <div class="wrap">
+        <div class="section-num">14 - The Demo</div>
+        <h2>From match clip to coaching report.</h2>
+        <p class="section-intro">
+          The proof of concept turns a short broadcast clip into a structured
+          SoccerVision report: score context, clip summary, outcome projection,
+          metric cards, confidence indicators, and coach-facing insights.
+        </p>
+
+        <figure class="demo-hero-shot">
+          <img src="assets/report-summary.png" alt="SoccerVision report summary showing score, match summary, outcome model, and metric cards">
+          <figcaption>
+            <strong>Demo output:</strong> the report summarizes what happened in
+            the uploaded clip, shows the confidence/coverage of the analysis, and
+            gives staff a quick path from raw video to reviewable decisions.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         15 - ARCHITECTURE TRADEOFFS
     ─────────────────────────────────────── -->
     <section id="tradeoffs" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">13 - Architecture Tradeoffs</div>
+        <div class="section-num">15 - Architecture Tradeoffs</div>
         <h2>The choices I expect to be questioned.</h2>
         <p class="section-intro">
           I did not choose one model to do everything. I split the problem by
@@ -851,11 +914,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         14 - CHALLENGES
+         16 - CHALLENGES
     ─────────────────────────────────────── -->
     <section id="challenges" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">14 - Challenges &amp; Validation</div>
+        <div class="section-num">16 - Challenges &amp; Validation</div>
         <h2>What makes this genuinely hard.</h2>
 
         <div class="ch-grid">
@@ -896,11 +959,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         15 - EVALUATION PLAN
+         17 - EVALUATION PLAN
     ─────────────────────────────────────── -->
     <section id="eval" class="s-gray reveal">
       <div class="wrap">
-        <div class="section-num">15 - Evaluation Plan</div>
+        <div class="section-num">17 - Evaluation Plan</div>
         <h2>What I would evaluate with more time.</h2>
         <p class="section-intro">
           The POC already has internal validation built in: confidence flags,
@@ -941,69 +1004,6 @@
             <p>Measure processing time, API cost, GPU cost, failure rate, and whether the pipeline is fast enough for halftime or post-match review.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────
-         16 - DESIGN ITERATION
-    ─────────────────────────────────────── -->
-    <section id="design" class="s-white reveal">
-      <div class="wrap">
-        <div class="section-num">16 - Product &amp; Design Iteration</div>
-        <h2>The interface changed as the problem got clearer.</h2>
-        <p class="section-intro">
-          I started with a dashboard that proved the data surfaces, then moved
-          toward a more coach-ready report that explains confidence, metric
-          sources, and the story of the clip.
-        </p>
-
-        <div class="design-grid">
-          <figure class="design-shot">
-            <img src="assets/dashboard-light.png" alt="Earlier match analysis dashboard with field, timeline, stats, and comparison panels">
-            <figcaption>
-              <strong>First usable dashboard</strong>
-              Field view, event timeline, action stats, heatmap, and team comparison made the extracted data visible.
-            </figcaption>
-          </figure>
-          <figure class="design-shot design-shot-large">
-            <img src="assets/report-summary.png" alt="Current SoccerVision report summary with score, match summary, outcome model, and metric cards">
-            <figcaption>
-              <strong>Current report direction</strong>
-              The darker green report puts clip summary, confidence, score, xG, possession, retention, distance, and key events up front.
-            </figcaption>
-          </figure>
-          <figure class="design-shot">
-            <img src="assets/metric-detail.png" alt="Metric detail dashboard showing team comparison, finishing quality, cumulative xG, and spatial occupancy">
-            <figcaption>
-              <strong>Metric depth</strong>
-              Later iterations added finishing quality, cumulative xG, tactical occupancy, and clearer metric comparisons.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────
-         17 - DEMO
-    ─────────────────────────────────────── -->
-    <section id="demo" class="s-gray reveal">
-      <div class="wrap">
-        <div class="section-num">17 - The Demo</div>
-        <h2>From match clip to coaching report.</h2>
-        <p class="section-intro">
-          The proof of concept turns a short broadcast clip into a structured
-          SoccerVision report: score context, clip summary, outcome projection,
-          metric cards, confidence indicators, and coach-facing insights.
-        </p>
-
-        <figure class="demo-hero-shot">
-          <img src="assets/report-summary.png" alt="SoccerVision report summary showing score, match summary, outcome model, and metric cards">
-          <figcaption>
-            <strong>Demo output:</strong> the report summarizes what happened in
-            the uploaded clip, shows the confidence/coverage of the analysis, and
-            gives staff a quick path from raw video to reviewable decisions.
-          </figcaption>
-        </figure>
       </div>
     </section>
 
