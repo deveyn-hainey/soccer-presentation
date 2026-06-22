@@ -168,9 +168,11 @@ Transition:
 **Core point:** The implementation has concrete routes and data shapes.
 
 Say:
-> In the actual code, `app/page.tsx` handles upload, keyframe extraction, concurrency, and client-side merging.
+> In the actual code, `app/page.tsx` handles upload, keyframe extraction, concurrency, client-side merging, and key frame selection.
 >
-> `/api/analyze/frame` is the Claude fallback frame route. `/api/analyze/pitch` estimates the visible pitch window. `/api/analyze/events` reviews candidate moments, reads scoreboard values when visible, and handles low-confidence fallbacks. `/api/analyze/summarize` deduplicates events, builds team stats, selects key frames, and produces the final `MatchAnalysis` JSON.
+> `/api/analyze/frame` is the Claude fallback frame route. `/api/analyze/pitch` estimates the visible pitch window. `/api/analyze/events` reviews candidate moments, reads scoreboard values when visible, and handles low-confidence fallbacks.
+>
+> After event review, the client selects up to 12 key frames — prioritizing goal, shot, save, and set-piece frames, then filling remaining slots with evenly spaced coverage frames for tactical context. These are sent to `/api/analyze/summarize`, which deduplicates events, builds team stats, runs the single Opus 4.8 vision synthesis pass, and produces the final `MatchAnalysis` JSON.
 >
 > The optional YOLO worker can produce dense frame data and should become the primary production extraction layer.
 
@@ -321,9 +323,12 @@ Say:
 
 Show:
 - Home/upload screen or demo button
+- Kit color picker (home/away selectors above the drop zone)
 - Accepted short clip flow
 
 Say:
+> Before uploading, you can tell the system which jersey colors belong to each team. This anchors the home and away labels used throughout the analysis. Set it to auto and the model will infer from the most common jersey colors it sees, but specifying it explicitly improves consistency when kits are similar in brightness or when the broadcast has unusual lighting.
+>
 > The browser extracts sampled frames using Canvas. The full video does not need to be sent through the frame-analysis route. The system works from sampled images plus optional worker metadata.
 >
 > This is one of the early design decisions: keep the interactive path fast enough to demonstrate and iterate.

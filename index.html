@@ -645,7 +645,7 @@
             <div class="dh-arrow">→</div>
             <div class="dbox">
               <div class="dbox-title">4 Concurrent Workers</div>
-              <div class="dbox-sub">Runs bounded concurrency for frame analysis · event review uses 4-frame batches · client merges results</div>
+              <div class="dbox-sub">Runs bounded concurrency for frame analysis · event review uses 4-frame batches · client merges results · selects up to 12 key frames (event frames + evenly spaced coverage) before sending to /summarize</div>
             </div>
           </div>
         </div>
@@ -704,7 +704,7 @@
           <div class="swim-row">
             <div class="dbox">
               <div class="dbox-file">api/analyze/summarize</div>
-              <div class="dbox-sub">Deduplicates events across time &amp; position windows · Builds per-team stats: possession, passes, shots, xG, distance, heatmap · Scoreboard delta → clip-scoped goals · Selects up to 12 key frames</div>
+              <div class="dbox-sub">Deduplicates events across time &amp; position windows · Builds per-team stats: possession, passes, shots, xG, distance, heatmap · Scoreboard delta → clip-scoped goals · Receives pre-selected key frames from the client</div>
             </div>
             <div class="dh-arrow">→</div>
             <div class="dbox dbox-model dbox-opus">
