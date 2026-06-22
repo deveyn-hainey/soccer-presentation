@@ -172,7 +172,7 @@
             </ul>
             <p class="card-note">
               They make decisions about tactics, formations, and training focus.
-              They need evidence, fast.
+              They need evidence they can act on.
             </p>
           </div>
           <div class="user-card secondary-card">
@@ -353,7 +353,7 @@
             <div class="scope-head out-head">Out of Scope</div>
             <ul class="scope-list">
               <li>Real-time / live analysis</li>
-              <li>Not optimized for frequent camera cuts or simultaneous multi-feed footage</li>
+              <li>Simultaneous multi-feed footage</li>
               <li>Biometric data</li>
               <li>Full 90-minute match analysis</li>
               <li>Injury risk flagging</li>
@@ -402,7 +402,7 @@
           <div class="block-node">
             <span>Models</span>
             <strong>Claude + YOLO worker path</strong>
-            <p>Claude for frame interpretation and summary; YOLO worker as the local dense-CV path when the demo is configured for it.</p>
+            <p>Claude for frame interpretation and synthesis; YOLO worker as the dense-CV layer: soccana detection, ByteTrack tracking, pitch masking, and homography.</p>
           </div>
           <div class="block-arrow">→</div>
           <div class="block-node">
@@ -443,7 +443,7 @@
           <div class="data-card">
             <div class="data-badge">Identity</div>
             <h4>Team Assignment</h4>
-            <p>Which players belong to which team, inferred from model output, kit context, or worker-side jersey clustering.</p>
+            <p>When the YOLO worker runs, team assignment uses jersey HSV color clustering — K-means on the upper body of each detected player. The Claude fallback infers from kit context and model output.</p>
             <div class="data-output">→ Possession split, per-team stats, comparison</div>
           </div>
           <div class="data-card">
@@ -1001,7 +1001,7 @@
           <div class="eval-card">
             <span>Operations</span>
             <strong>Can it run at the right cost?</strong>
-            <p>Measure processing time, API cost, GPU cost, failure rate, and whether the pipeline is fast enough for halftime or post-match review.</p>
+            <p>Measure processing time, API cost, GPU cost, failure rate, and whether the pipeline fits a post-match or next-session review workflow.</p>
           </div>
         </div>
       </div>
