@@ -251,7 +251,7 @@
             <div class="success-item">Surfaces the 2-3 moments that mattered in a clip</div>
             <div class="success-item">Shows possession flow, not just percentages</div>
             <div class="success-item">Gives coaches something to say in the next training session</div>
-            <div class="success-item">Fast enough to use at halftime</div>
+            <div class="success-item">Ready before the next training session</div>
           </div>
         </div>
       </div>
@@ -278,9 +278,9 @@
               <li>Widely trusted at professional level</li>
             </ul>
             <div class="tag-row">
-              <span class="tag t-red">Manual tagging</span>
-              <span class="tag t-red">Time-delayed</span>
+              <span class="tag t-red">Expensive</span>
               <span class="tag t-red">No narrative</span>
+              <span class="tag t-red">Analyst-ready, not coach-ready</span>
             </div>
           </div>
           <div class="ls-card">
@@ -293,7 +293,7 @@
             <div class="tag-row">
               <span class="tag t-red">No coaching output</span>
               <span class="tag t-red">No context</span>
-              <span class="tag t-red">Expensive pipeline</span>
+              <span class="tag t-red">Expensive</span>
             </div>
           </div>
           <div class="ls-card ls-featured">
@@ -305,9 +305,9 @@
               <li>Output is coaching-ready, not analyst-ready</li>
             </ul>
             <div class="tag-row">
-              <span class="tag t-green">Fast</span>
               <span class="tag t-green">Narrative output</span>
               <span class="tag t-green">Accessible</span>
+              <span class="tag t-green">Evidence-backed</span>
             </div>
           </div>
         </div>
@@ -353,7 +353,7 @@
             <div class="scope-head out-head">Out of Scope</div>
             <ul class="scope-list">
               <li>Real-time / live analysis</li>
-              <li>Multi-camera support</li>
+              <li>Not optimized for frequent camera cuts or simultaneous multi-feed footage</li>
               <li>Biometric data</li>
               <li>Full 90-minute match analysis</li>
               <li>Injury risk flagging</li>
@@ -414,12 +414,12 @@
 
         <div class="truth-row">
           <div class="truth-card">
-            <div class="block-label">What I built now</div>
-            <p>A working Next.js proof of concept that samples frames, calls vision routes, reviews events, summarizes metrics, and renders a coaching dashboard.</p>
+            <div class="block-label">What I built</div>
+            <p>Two pieces working together in the same repo: a Next.js app that handles the full upload-to-insights workflow — frame sampling, Claude vision routes, event review, metrics, coaching dashboard — and a Python FastAPI worker at <code>workers/yolo/</code> that runs soccana detection, ByteTrack tracking, jersey color clustering, pitch masking, and homography. When the worker is running and the environment variable is set, the Next.js app routes through it automatically.</p>
           </div>
           <div class="truth-card">
-            <div class="block-label">What I researched for next</div>
-            <p>A more production-grade CV layer: soccer-specific YOLO, ByteTrack/BoT-SORT, keypoint homography, labeled benchmarks, and hosted GPU inference.</p>
+            <div class="block-label">What comes next</div>
+            <p>Fine-tuning soccana on our own labeled clips for better accuracy on specific broadcast angles and edge cases. Hosting the worker on a GPU rather than running it locally. Building a match library and coach-in-the-loop correction loop.</p>
           </div>
         </div>
       </div>
@@ -502,8 +502,8 @@
           </div>
           <div class="metric-card">
             <span>Passes</span>
-            <strong>Reviewed pass events</strong>
-            <p>The current summary uses verified pass events. A denser YOLO/tracking path would improve pass counts from possession-chain changes.</p>
+            <strong>Possession-chain counter on dense frames</strong>
+            <p>When the YOLO worker is running, passes are tracked via <code>countPossessionPasses()</code> on dense frames — the ball moving to a teammate while possession stays with the same team. Claude-reviewed pass events are the fallback when the worker isn't configured.</p>
           </div>
           <div class="metric-card">
             <span>Ball Retention</span>
@@ -872,7 +872,7 @@
           <div class="ch-card">
             <div class="ch-num">01</div>
             <h4>Latency</h4>
-            <p>Each API call takes 8-15 seconds of network and model time. Running four frames concurrently already cuts total time by 75%. Prompt caching on the Opus synthesis call avoids re-sending the same system instructions on every analysis.</p>
+            <p>API calls add meaningful processing time per frame. Running four frames concurrently keeps total analysis time reasonable — processing every frame serially would make the workflow impractical. Prompt caching on the Opus synthesis call avoids re-sending the same system instructions on every analysis.</p>
           </div>
           <div class="ch-card">
             <div class="ch-num">02</div>
@@ -913,9 +913,10 @@
         <div class="section-num">15 - Evaluation Plan</div>
         <h2>What I would evaluate with more time.</h2>
         <p class="section-intro">
-          Because this was a fast task, I focused on proving the workflow. The
-          next step would be a proper benchmark that measures whether each signal
-          is accurate enough for coaches to trust.
+          The POC already has internal validation built in: confidence flags,
+          deduplication, conflict surfacing, scoreboard baseline logic. The next
+          step is external benchmarks that turn "this works" into "a coach can
+          trust this number."
         </p>
 
         <div class="eval-grid">
@@ -1032,33 +1033,23 @@
         <div class="future-grid">
           <div class="future-card">
             <div class="future-tag">Better Data</div>
-            <h4>Labeled soccer benchmark</h4>
-            <p>Create or obtain labeled clips for players, ball, referees, pitch landmarks, shots, passes, and goals. Use this to measure real accuracy instead of relying on visual inspection.</p>
-          </div>
-          <div class="future-card">
-            <div class="future-tag">Better Model</div>
-            <h4>Fine-tuned detector + tracker</h4>
-            <p>Train or fine-tune a soccer-specific YOLO model, add stronger tracking, and evaluate ID stability across camera cuts and occlusions.</p>
-          </div>
-          <div class="future-card">
-            <div class="future-tag">Better Geometry</div>
-            <h4>Pitch homography everywhere</h4>
-            <p>Use field keypoints and calibration data so heatmaps, distance, line height, and tactical shape are based on real pitch coordinates.</p>
+            <h4>Fine-tune on our own clips</h4>
+            <p>soccana is already trained on soccer footage. The next step is fine-tuning on our own labeled clips: our broadcast angles, jersey combinations, and edge cases. More targeted data means better accuracy on the footage we actually care about.</p>
           </div>
           <div class="future-card">
             <div class="future-tag">Infrastructure</div>
-            <h4>Hosted worker vs local worker</h4>
-            <p>Keep local inference for demos and low cost, but host the YOLO/homography worker on a GPU service when teams need faster turnaround and shared access.</p>
+            <h4>Hosted GPU worker</h4>
+            <p>The worker runs locally now, which works for demos and development. Hosting it on a GPU service gives teams faster turnaround, shared access, and opens up full 90-minute match processing.</p>
           </div>
           <div class="future-card">
             <div class="future-tag">Product</div>
             <h4>Coach-in-the-loop review</h4>
-            <p>Let analysts approve or correct events, then feed those corrections back into the evaluation set and future model tuning.</p>
+            <p>Let analysts approve or correct events, then feed those corrections back into the evaluation set. That is how the system gets more accurate over time rather than staying static.</p>
           </div>
           <div class="future-card">
             <div class="future-tag">Scale</div>
             <h4>From clips to match library</h4>
-            <p>Extend from 1-3 minute clips to full-match and multi-match analysis: player development, opponent tendencies, and league-wide benchmarking.</p>
+            <p>Extend from short clip uploads to full-match and multi-match analysis via ETL pipelines: player development trends, opponent scouting, and league-wide benchmarking.</p>
           </div>
         </div>
       </div>
