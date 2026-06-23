@@ -278,8 +278,8 @@
               <li>Widely trusted at professional level</li>
             </ul>
             <div class="tag-row">
-              <span class="tag t-red">Expensive</span>
-              <span class="tag t-red">No narrative</span>
+              <span class="tag t-red">High-end workflow</span>
+              <span class="tag t-red">Analyst-oriented</span>
               <span class="tag t-red">Analyst-ready, not coach-ready</span>
             </div>
           </div>
@@ -292,8 +292,8 @@
             </ul>
             <div class="tag-row">
               <span class="tag t-red">No coaching output</span>
-              <span class="tag t-red">No context</span>
-              <span class="tag t-red">Expensive</span>
+              <span class="tag t-red">Less coach-facing by default</span>
+              <span class="tag t-red">High-end workflow</span>
             </div>
           </div>
           <div class="ls-card ls-featured">
@@ -443,7 +443,7 @@
           <div class="block-node">
             <span>Models</span>
             <strong>Claude + YOLO worker path</strong>
-            <p>Claude for frame interpretation and synthesis; YOLO worker as the dense-CV layer: soccana detection, ByteTrack tracking, pitch masking, and homography.</p>
+            <p>Claude for frame interpretation and synthesis; YOLO worker as the dense-CV layer: soccer detection, ByteTrack IDs when dense tracking is available; confidence still depends on occlusion and camera cuts; pitch masking; and homography when calibration succeeds.</p>
           </div>
           <div class="block-arrow">→</div>
           <div class="block-node">
@@ -567,7 +567,7 @@
             <span class="arch-dot"></span>
             <div>
               <strong>Keyframe Extraction</strong>
-              <p>The browser uses the Canvas API to pull frames from the video at regular intervals - no full video is sent to the server. Frames are extracted at 1280×720. Higher resolution matters: the ball becomes invisible at half that size.</p>
+              <p>The browser uses the Canvas API to pull frames from the video at regular sampled intervals for the Claude path. The dense YOLO worker path can receive the uploaded video for tracking. Frames are extracted at 1280×720. Higher resolution matters: the ball becomes invisible at half that size.</p>
             </div>
           </div>
           <div class="arch-item">
@@ -630,7 +630,7 @@
             <div class="dh-arrow">→</div>
             <div class="dbox">
               <div class="dbox-title">Keyframe Extraction</div>
-              <div class="dbox-sub">Canvas API · 1280×720 · every 4-6 s · no video sent to server</div>
+              <div class="dbox-sub">Canvas API · 1280×720 · regular sampled intervals · video upload only for dense worker tracking</div>
             </div>
             <div class="dh-arrow">→</div>
             <div class="dbox">
@@ -655,7 +655,7 @@
             <div class="dbox">
               <div class="dbox-file">api/analyze/pitch</div>
               <div class="dbox-title">Camera Calibration</div>
-              <div class="dbox-sub">Estimates visible pitch window as a fallback · smooths between sampled frames · worker homography can provide true pitch positions</div>
+              <div class="dbox-sub">Estimates visible pitch window as a fallback · smooths between sampled frames · worker homography can provide true pitch positions when calibration succeeds</div>
             </div>
           </div>
         </div>
@@ -770,7 +770,7 @@
             <div class="ml-model">YOLO Worker</div>
             <div class="ml-role">Configurable POC layer, production primary layer</div>
             <ul class="dot-list">
-              <li>Detects players, ball, and referees with the right weights</li>
+              <li>Detects players, ball, and referees with soccer-specific weights when configured</li>
               <li>Can generate dense frames at 15fps through the worker</li>
               <li>Can run locally now or on a hosted GPU later</li>
             </ul>
@@ -986,7 +986,7 @@
           <div class="eval-card">
             <span>Calibration</span>
             <strong>Are positions meaningful?</strong>
-            <p>Compare image-space locations against true pitch coordinates using keypoint homography and labeled pitch landmarks.</p>
+            <p>Compare image-space locations against true pitch coordinates when calibration succeeds, using keypoint homography and labeled pitch landmarks.</p>
           </div>
           <div class="eval-card">
             <span>Events</span>
