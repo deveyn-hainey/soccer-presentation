@@ -79,41 +79,11 @@ Say:
 > Computer vision trackers can produce high-frequency data, but coordinates alone are not coaching insight. The opportunity I focused on is the bridge: AI that can extract structure from video and turn it into coaching language.
 
 Transition:
-> To keep the task realistic, I scoped the first version tightly.
+> From there, I broke down what data can actually come out of the video.
 
 ---
 
-### 6. Scope - 1.5 min
-
-**Core point:** Short broadcast clips first; full real-time analysis later.
-
-Say:
-> I scoped this to standard broadcast footage and short clips, around one to three minutes. That is enough to prove upload, extraction, event review, metrics, and insight generation.
->
-> Out of scope for this proof of concept were full 90-minute matches, real-time streaming, multi-camera support, biometrics, and injury risk. Those are valuable, but they require better infrastructure and stronger validation.
-
-Transition:
-> With the scope defined, I treated the system as building blocks.
-
----
-
-### 7. Research Inputs & Building Blocks - 2 min
-
-**Core point:** The proof of concept uses existing blocks responsibly.
-
-Say:
-> I treated this like assembly, not reinvention. For a short task, the responsible move was to use credible existing pieces and learn where they break.
->
-> The building blocks were: soccer analytics workflow research, public footage and SoccerNet-style references, Claude for interpretation and synthesis, a YOLO worker path for dense computer vision, and a dashboard to turn the output into something usable.
->
-> The current repo proves the workflow. The next research-grade path would be a soccer-specific detector, stable tracking, homography, labeled benchmarks, and hosted inference.
-
-Transition:
-> Next is the data question: what can actually come out of video?
-
----
-
-### 8. Data Extraction - 1.5 min
+### 6. Data Extraction - 1.5 min
 
 **Core point:** Video contains spatial, temporal, identity, and tactical signals.
 
@@ -123,6 +93,36 @@ Say:
 > Spatial: where players and the ball are. Temporal: what happens over time, like passes, shots, tackles, corners. Identity: which players belong to which team. Tactical: shape, spacing, line height, pressure, and chance context.
 >
 > Those raw signals become heatmaps, event timelines, possession split, team comparison, xG, and coaching recommendations.
+
+Transition:
+> Once I knew the possible data signals, I scoped what was realistic for this proof of concept.
+
+---
+
+### 7. Scope - 1.5 min
+
+**Core point:** Short broadcast clips first; full real-time analysis later.
+
+Say:
+> I scoped this to standard broadcast footage and short clips, around one to three minutes. That is enough to prove upload, extraction, event review, metrics, and insight generation.
+>
+> Out of scope for this proof of concept were full 90-minute matches, real-time streaming, multi-camera support, biometrics, and injury risk. Those are valuable, but they require better infrastructure and stronger validation.
+
+Transition:
+> With the data types and scope defined, I treated the system as building blocks.
+
+---
+
+### 8. Research Inputs & Building Blocks - 2 min
+
+**Core point:** The proof of concept uses existing blocks responsibly.
+
+Say:
+> I treated this like assembly, not reinvention. For a short task, the responsible move was to use credible existing pieces and learn where they break.
+>
+> The building blocks were: soccer analytics workflow research, public footage and SoccerNet-style references, Claude for interpretation and synthesis, a YOLO worker path for dense computer vision, and a dashboard to turn the output into something usable.
+>
+> The current repo proves the workflow. The next research-grade path would be a soccer-specific detector, stable tracking, homography, labeled benchmarks, and hosted inference.
 
 Transition:
 > But each metric needs to be honest about what powers it.

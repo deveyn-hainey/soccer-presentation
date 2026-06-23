@@ -14,9 +14,9 @@
         <a href="#coverage">Coverage</a>
         <a href="#users">Users</a>
         <a href="#problem">Problem</a>
+        <a href="#data">Data</a>
         <a href="#scope">Scope</a>
         <a href="#building">Blocks</a>
-        <a href="#data">Data</a>
         <a href="#metrics">Metrics</a>
         <a href="#architecture">Architecture</a>
         <a href="#pipeline">Pipeline</a>
@@ -315,11 +315,52 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         06 - SCOPE
+         06 - DATA
     ─────────────────────────────────────── -->
-    <section id="scope" class="s-white reveal">
+    <section id="data" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">06 - Scope</div>
+        <div class="section-num">06 - Data Extraction</div>
+        <h2>What can we actually pull from a video?</h2>
+        <p class="section-intro">
+          Before insights, you need to understand what types of signals live
+          inside video footage and how each one maps to something useful.
+        </p>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-badge">Spatial</div>
+            <h4>Position Data</h4>
+            <p>Where visible players and the ball are in the frame, with true pitch coordinates when homography succeeds.</p>
+            <div class="data-output">→ Heatmaps, territory control, tactical board</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Temporal</div>
+            <h4>Event Sequences</h4>
+            <p>What happens in what order - passes, tackles, shots, transitions, set pieces.</p>
+            <div class="data-output">→ Match timeline, key moments, transition patterns</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Identity</div>
+            <h4>Team Assignment</h4>
+            <p>When the YOLO worker runs, team assignment uses jersey HSV color clustering: K-means on the upper body of each detected player. The Claude fallback infers from kit context and model output.</p>
+            <div class="data-output">→ Possession split, per-team stats, comparison</div>
+          </div>
+          <div class="data-card">
+            <div class="data-badge">Tactical</div>
+            <h4>Shape &amp; Structure</h4>
+            <p>How teams appear organized from sampled frames - line height, spacing, pressure, and shot context.</p>
+            <div class="data-output">→ Formation recognition, coaching recommendations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────
+         07 - SCOPE
+    ─────────────────────────────────────── -->
+    <section id="scope" class="s-gray reveal">
+      <div class="wrap">
+        <div class="section-num">07 - Scope</div>
         <h2>Know what you're building. And what you're not.</h2>
 
         <div class="scope-meta">
@@ -374,11 +415,11 @@
     </section>
 
     <!-- ──────────────────────────────────────
-         07 - BUILDING BLOCKS
+         08 - BUILDING BLOCKS
     ─────────────────────────────────────── -->
-    <section id="building" class="s-gray reveal">
+    <section id="building" class="s-white reveal">
       <div class="wrap">
-        <div class="section-num">07 - Research Inputs &amp; Building Blocks</div>
+        <div class="section-num">08 - Research Inputs &amp; Building Blocks</div>
         <h2>I treated this like assembly, not reinvention.</h2>
         <p class="section-intro">
           With a short task window, the responsible approach was to use credible
@@ -412,47 +453,6 @@
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- ──────────────────────────────────────
-         08 - DATA
-    ─────────────────────────────────────── -->
-    <section id="data" class="s-white reveal">
-      <div class="wrap">
-        <div class="section-num">08 - Data Extraction</div>
-        <h2>What can we actually pull from a video?</h2>
-        <p class="section-intro">
-          Before insights, you need to understand what types of signals live
-          inside video footage and how each one maps to something useful.
-        </p>
-
-        <div class="data-grid">
-          <div class="data-card">
-            <div class="data-badge">Spatial</div>
-            <h4>Position Data</h4>
-            <p>Where visible players and the ball are in the frame, with true pitch coordinates when homography succeeds.</p>
-            <div class="data-output">→ Heatmaps, territory control, tactical board</div>
-          </div>
-          <div class="data-card">
-            <div class="data-badge">Temporal</div>
-            <h4>Event Sequences</h4>
-            <p>What happens in what order - passes, tackles, shots, transitions, set pieces.</p>
-            <div class="data-output">→ Match timeline, key moments, transition patterns</div>
-          </div>
-          <div class="data-card">
-            <div class="data-badge">Identity</div>
-            <h4>Team Assignment</h4>
-            <p>When the YOLO worker runs, team assignment uses jersey HSV color clustering — K-means on the upper body of each detected player. The Claude fallback infers from kit context and model output.</p>
-            <div class="data-output">→ Possession split, per-team stats, comparison</div>
-          </div>
-          <div class="data-card">
-            <div class="data-badge">Tactical</div>
-            <h4>Shape &amp; Structure</h4>
-            <p>How teams appear organized from sampled frames - line height, spacing, pressure, and shot context.</p>
-            <div class="data-output">→ Formation recognition, coaching recommendations</div>
-          </div>
-        </div>
       </div>
     </section>
 
